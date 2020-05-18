@@ -1,0 +1,15 @@
+@import url(./_order/popup__error_order_1.css);
+@import url(./_position/popup__error_position_center.css);
+@import url(./_margin/popup__error_margin.css);
+@import url(./_server-msg/popup__error_server-msg.css);
+
+.popup__error {
+  color: #ff2828d0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: .8rem;
+  line-height: 1.2;
+  opacity: 0;
+  margin: 2px 0 0 0;
+}

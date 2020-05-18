@@ -1,0 +1,5 @@
+.popup__link {
+  color: #2F71E5;
+  text-decoration: none;
+  cursor: url(../../../images/cursor_hand.cur), pointer;
+}

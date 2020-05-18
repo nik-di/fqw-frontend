@@ -1,0 +1,23 @@
+@import url(./__title/header-top-panel__title.css);
+@import url(./__link/header-top-panel__link.css);
+@import url(./__links/header-top-panel__links.css);
+@import url(./__button/header-top-panel__button.css);
+@import url(./__nav/header-top-panel__nav.css);
+@import url(./__btn-logout-icon/header-top-panel__btn-logout-icon.css);
+
+.header-top-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 200px);
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media screen and (max-width: 800px) {
+  .header-top-panel{
+    width: calc(100% - 80px);
+  }
+}

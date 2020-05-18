@@ -1,0 +1,23 @@
+@import url(./__title/header-content__title.css);
+@import url(./__subtitle/header-content__subtitle.css);
+@import url(./search-form/search-form.css);
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 200px);
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+@media screen and (max-width: 800px) {
+  .header-content {
+    width: calc(100% - 80px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header-content {
+    width: calc(100% - 20px);
+  }
+}

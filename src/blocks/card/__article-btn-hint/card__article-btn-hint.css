@@ -1,0 +1,29 @@
+@import url(./_size/card__article-btn-hint_size_l.css);
+@import url(./_size/card__article-btn-hint_size_m.css);
+
+.card__article-btn-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 70px;
+  padding: 0 5px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: -1px 0px 5px 0px rgba(50, 50, 50, 0.38);
+  background-color: #ffffff;
+}
+
+@media screen and (max-width: 1259px) {
+  .card__article-btn-hint {
+    top: 80px;
+    right: 24px;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  .card__article-btn-hint {
+    max-width: 150px;
+  }
+}

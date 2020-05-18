@@ -1,0 +1,21 @@
+.header-content.header-content_content-position_center {
+  align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  .header-content_content-position_center {
+    width: calc(100% - 300px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .header-content_content-position_center {
+    width: calc(100% - 80px);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header-content_content-position_center {
+    width: calc(100% - 20px);
+  }
+}

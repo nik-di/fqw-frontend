@@ -1,0 +1,8 @@
+.about-author__title {
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 2.7rem;
+  font-weight: bold;
+}

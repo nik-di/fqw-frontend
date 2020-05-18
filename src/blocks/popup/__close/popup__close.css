@@ -1,0 +1,19 @@
+.popup__close {
+  color: #ffffff;
+  opacity: .9;
+  position: absolute;
+  top: -10px;
+  right: -40px;
+  width: 40px;
+  height: 40px;
+}
+
+.popup__close:hover {
+  cursor: url(../../../images/cursor_hand.cur), pointer;
+}
+
+@media screen and (max-width: 770px) {
+  .popup__close {
+    display: none;
+  }
+}

@@ -1,0 +1,33 @@
+.popup__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #d4d4d4;
+  background-color: transparent;
+  box-sizing: border-box;
+  color: #000000;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: .8rem;
+  line-height: 2;
+  opacity: .9;
+  outline: none;
+}
+
+.popup__input:focus {
+  border-bottom: 1px solid #858585;
+}
+
+.popup__input:invalid + .popup__error {
+  animation: errors .9s ease-in-out forwards;
+}
+
+@keyframes errors {
+  from {
+    opacity: 0; 
+  }
+  
+  to {
+    opacity: 1;
+  }
+}

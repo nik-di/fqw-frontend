@@ -1,0 +1,19 @@
+.main-content__page-about-link {
+  text-decoration: none;
+  color: #000000;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 800px) {
+  .main-content__page-about-link {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main-content__page-about-link-text {
+    display: none;
+  }
+}

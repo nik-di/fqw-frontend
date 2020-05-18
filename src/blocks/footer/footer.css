@@ -1,0 +1,39 @@
+@import url('./footer-links/footer-links.css');
+@import url('./footer-copyright/footer-copyright.css');
+@import url('./footer-social-links/footer-social-links.css');
+@import url('./footer-nav/footer-nav.css');
+
+.footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 200px);
+  margin: auto;
+  min-height: 80px;
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    width: calc(100% - 80px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-areas: 'text-links social'
+    'copyright .';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+
+@media screen and (max-width: 280px) {
+  .footer {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

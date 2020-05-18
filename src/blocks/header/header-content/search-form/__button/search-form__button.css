@@ -1,0 +1,45 @@
+.search-form__button {
+  border-radius: 100px;
+  border-style: none;
+  width: 100%;
+  max-width: 150px;
+  height: 100%;
+  color: #ffffff;
+  background-color: #2F71E5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 200;
+  outline: none;
+  cursor: url(../../../../../images/cursor_hand.cur), pointer;
+}
+
+.search-form__input:hover~.search-form__button {
+  background-color: #347EFF;
+}
+
+.search-form__button:hover {
+  background-color: #347EFF;
+}
+
+.search-form__input:focus~.search-form__button {
+  background-color: #347EFF;
+}
+
+.search-form__button:focus {
+  background-color: #2A65CC;
+}
+
+@media screen and (max-width: 500px) {
+  .search-form__button {
+    position: unset;
+    box-sizing: border-box;
+    max-width: 500px;
+    height: 60px;
+    margin-top: 15px;
+    padding: 0 15px;
+  }
+}

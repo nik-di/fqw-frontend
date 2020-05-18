@@ -1,0 +1,14 @@
+.header-top-panel__title {
+  margin: auto 20px auto 0;
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: normal;
+  letter-spacing: .5px;
+}
+
+@media screen and (max-width: 450px) {
+  .header-top-panel__title {
+    font-size: 1rem;
+  }
+}

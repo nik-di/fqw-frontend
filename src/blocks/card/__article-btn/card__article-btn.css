@@ -1,0 +1,20 @@
+.card__article-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: -1px 0px 5px 0px rgba(50, 50, 50, 0.38);
+  background-color: white;
+  cursor: url(../../../images/cursor_hand.cur), pointer;
+  outline: none;
+}
+
+.card__article-btn:hover>* {
+  opacity: 1;
+}

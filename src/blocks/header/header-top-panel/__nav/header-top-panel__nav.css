@@ -1,0 +1,17 @@
+@import url(./_hidden/header-top-panel__nav_hidden.css);
+.header-top-panel__nav {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .header-top-panel__nav {
+    display: none;
+  }
+}
