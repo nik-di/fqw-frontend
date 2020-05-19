@@ -81,15 +81,15 @@
           <h2 class="popup__title">Вход</h2>
           <form class="popup__form">
             <div class="popup__field">
-              <label class="popup__label" for="email">Email</label>
+              <label class="popup__label" for="enter-email">Email</label>
               <input autocomplete="off"
                      pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$"
-                     type="text" class="popup__input" id="email" placeholder="Enter email">
+                     type="text" class="popup__input" id="enter-email" placeholder="Enter email">
               <span class="popup__error">e-mail в формате: sega@yandex.ru</span>
             </div>
             <div class="popup__field">
-              <label class="popup__label" for="pass">Password</label>
-              <input autocomplete="off" minlength="6" type="text" class="popup__input" id="pass"
+              <label class="popup__label" for="enter-pass">Password</label>
+              <input autocomplete="off" minlength="6" type="text" class="popup__input" id="enter-pass"
                      placeholder="Enter password">
               <span class="popup__error">пароль должен быть больше 6 символов</span>
             </div>
@@ -100,9 +100,9 @@
                     class="popup__error popup__error_order_1 popup__error_position_center popup__error_margin popup__error_server-msg">ошибка
                 сервера</span>
             </div>
-            <span class="popup__pretext">или&nbsp;
-              <div class="popup__link">Зарегистрироваться</div>
-            </span>
+            <div class="popup__pretext">или&nbsp;
+              <span class="popup__link">Зарегистрироваться</span>
+            </div>
           </form>
         </div>
         <svg class="popup__close" fill="none"
@@ -124,21 +124,21 @@
           <h2 class="popup__title">Регистрация</h2>
           <form class="popup__form">
             <div class="popup__field">
-              <label class="popup__label" for="email">Email</label>
+              <label class="popup__label" for="reg-email">Email</label>
               <input autocomplete="off"
                      pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$"
-                     type="text" class="popup__input" id="email" placeholder="Enter email">
+                     type="text" class="popup__input" id="reg-email" placeholder="Enter email">
               <span class="popup__error">e-mail в формате: sega@yandex.ru</span>
             </div>
             <div class="popup__field">
-              <label class="popup__label" for="pass">Password</label>
-              <input autocomplete="off" minlength="6" type="text" class="popup__input" id="pass"
+              <label class="popup__label" for="reg-pass">Password</label>
+              <input autocomplete="off" minlength="6" type="text" class="popup__input" id="reg-pass"
                      placeholder="Enter password">
               <span class="popup__error">пароль должен быть больше 6 символов</span>
             </div>
             <div class="popup__field">
-              <label class="popup__label" for="name">Name</label>
-              <input autocomplete="off" minlength="2" type="text" class="popup__input" id="name"
+              <label class="popup__label" for="reg-name">Name</label>
+              <input autocomplete="off" minlength="2" type="text" class="popup__input" id="reg-name"
                      placeholder="Enter name">
               <span class="popup__error">имя должно быть больше 2 символов</span>
             </div>
@@ -150,9 +150,9 @@
                     class="popup__error popup__error_order_1 popup__error_position_center popup__error_margin popup__error_server-msg">ошибка
                 сервера</span>
             </div>
-            <span class="popup__pretext">или&nbsp;
-              <div class="popup__link">Войти</div>
-            </span>
+            <div class="popup__pretext">или&nbsp;
+              <span class="popup__link">Войти</span>
+            </div>
           </form>
         </div>
         <svg class="popup__close" fill="none"
@@ -172,9 +172,9 @@
       <div class="popup__wrapper popup__wrapper_size_s">
         <div class="popup__content">
           <h2 class="popup__title">Пользователь успешно зарегистрирован!</h2>
-          <span class="popup__pretext">
-            <div class="popup__link">Выполнить вход</div>
-          </span>
+          <div class="popup__pretext">
+            <span class="popup__link">Выполнить вход</span>
+          </div>
         </div>
         <svg class="popup__close" fill="none"
              xmlns="http://www.w3.org/2000/svg">
