@@ -1,6 +1,7 @@
 @import url(./_type/_search/header_type_search.css);
 @import url(./__border-line/header__border-line.css);
 @import url(./mobile-menu-btn/mobile-menu-btn.css);
+@import url(./mobile-menu-popup/mobile-menu-popup.css);
 
 .header {
   width: 100%;

@@ -1,0 +1,7 @@
+.mobile-menu-popup__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 19px;
+}

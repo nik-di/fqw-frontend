@@ -17,6 +17,7 @@
 `circle-preloader_visible` - открывает попап
 `preloader-nothing_visible` - открывает попап
 `main-content_is-visible` - показать блок с результатами поиска
+`mobile-menu-popup_unvisible` - скрывает попап мобильного меню
 
 ### Установка
 #### Git command:

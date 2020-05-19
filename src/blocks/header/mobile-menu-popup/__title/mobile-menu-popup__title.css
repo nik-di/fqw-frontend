@@ -1,0 +1,11 @@
+.mobile-menu-popup__title {
+  font-family: RobotoSlab, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+  flex-basis: 385px;
+  color: #ffffff;
+}
