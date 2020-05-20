@@ -70,7 +70,7 @@ module.exports = (env) => {
                 name: '[name].[ext]',
                 outputPath: 'fonts',
                 esModule: false,
-                publicPath: './fonts'
+                publicPath: '../../fonts'
               },
             }
           ]
