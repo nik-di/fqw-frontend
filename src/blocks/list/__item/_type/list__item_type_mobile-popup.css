@@ -1,5 +1,11 @@
 .list__item.list__item_type_mobile-popup {
-  text-align: left;
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
-  padding: 10px 5px;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.list__item.list__item_type_mobile-popup:nth-of-type(3) {
+  justify-content: center;
 }

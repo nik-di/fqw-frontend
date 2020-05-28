@@ -1,0 +1,9 @@
+.popup__title {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1.9rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}

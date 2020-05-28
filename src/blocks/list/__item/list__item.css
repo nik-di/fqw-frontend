@@ -1,7 +1,6 @@
 @import url(./_type/list__item_type_mobile-popup.css);
 .list__item {
   list-style: none;
-  text-align: center;
   margin: 0 8px 0;
 }
 

@@ -1,4 +1,5 @@
 @import url(./_disabled/popup__button_disabled.css);
+@import url(./_type_mobile-menu/popup__button_type_mobile-menu.css);
 
 .popup__button {
   width: 100%;

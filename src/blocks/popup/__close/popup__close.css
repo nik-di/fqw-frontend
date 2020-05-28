@@ -1,3 +1,5 @@
+@import url(./_type_mobile-menu/popup__close_type_mobile-menu.css);
+
 .popup__close {
   color: #ffffff;
   opacity: .9;
@@ -6,6 +8,7 @@
   right: -40px;
   width: 40px;
   height: 40px;
+  z-index: 3;
 }
 
 .popup__close:hover {

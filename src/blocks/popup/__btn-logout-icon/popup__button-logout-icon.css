@@ -1,0 +1,5 @@
+@import url(./_hidden/popup__button-logout-icon_hidden.css);
+
+.popup__button-logout-icon {
+  margin-left: 5px;
+}

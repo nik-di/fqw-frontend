@@ -7,10 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Nikishin D.I.">
   <meta name="description"
-        content="Страница с сохраненными статьями происходящих в мире событий найденных по ключевому слову">
+    content="Страница с сохраненными статьями происходящих в мире событий найденных по ключевому слову">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css%>">
   <link rel="shortcut icon" href="<%=require('../../images/favicon.png')%>" type="image/x-icon">
-  <title>News Explorer: Main page</title>
+  <title>News Explorer: Saved articles</title>
 </head>
 
 <body class="page">
@@ -19,101 +19,98 @@
     <section class="header-top-panel">
       <h3 class="header-top-panel__title" lang="en">NewsExplorer</h3>
       <div class="mobile-menu-btn mobile-menu-btn_color_black">
-        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2"
-             xmlns="http://www.w3.org/2000/svg">
+        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
           <rect width="16" height="2" /></svg>
-        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2"
-             xmlns="http://www.w3.org/2000/svg">
+        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
           <rect width="16" height="2" /></svg>
       </div>
       <nav class="header-top-panel__nav">
         <ul class="list header-top-panel__links">
           <li class="list__item">
             <!-- header-top-panel__link_active - нижняя полоса под ссылкой -->
-            <a href="./main.html"
-               class="links header-top-panel__link">Главная</a>
+            <a href="./main.html" class="links header-top-panel__link">Главная</a>
           </li>
           <li class="list__item">
             <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
             <a href="./articles.html"
-               class="links header-top-panel__link header-top-panel__link_active">Сохраненные&nbsp;статьи</a>
+              class="links header-top-panel__link header-top-panel__link_active">Сохраненные&nbsp;статьи</a>
           </li>
           <li class="list__item">
-            <button
-                    class="header-top-panel__button header-top-panel__button_type_saved-articles">Грета
+            <button class="header-top-panel__button header-top-panel__button_type_saved-articles">Грета
               <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
-              <svg class="header-top-panel__btn-logout-icon"
-                   width="24" height="24"
-                   viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
+                xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+                  d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
               </svg>
             </button>
           </li>
         </ul>
       </nav>
-      <!--  mobile-menu-popup_unvisible - скрывает попап мобильного меню -->
-      <section class="mobile-menu-popup">
-        <div class="mobile-menu-popup__wrapper">
-          <div class="mobile-menu-popup__content">
-            <div class="mobile-menu-popup__header">
-              <h2 class="mobile-menu-popup__title">NewsExplorer</h2>
-              <svg class="mobile-menu-popup__close" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.4142 12L18.7071 17.2928L17.2929 18.7071L11.2929 12.7071C10.9024 12.3165 10.9024 11.6834 11.2929 11.2928L17.2929 5.29285L18.7071 6.70706L13.4142 12Z" fill="white"/>
-                <path d="M10.8787 12L5.58577 17.2928L6.99999 18.7071L13 12.7071C13.3905 12.3165 13.3905 11.6834 13 11.2928L6.99999 5.29285L5.58577 6.70706L10.8787 12Z" fill="white"/>
-                </svg>
-            </div>
-            <div class="mobile-menu-popup__border-line"></div>
-            <nav class="mobile-menu-popup__nav">
-              <ul class="mobile-menu-popup__links">
-                <li class="list__item list__item_type_mobile-popup">
-                  <a href="./main.html"
-                     class="links mobile-menu-popup__link">Главная</a>
-                </li>
-                <li class="list__item list__item_type_mobile-popup">
-                  <a href="./articles.html"
-                     class="links mobile-menu-popup__link">Сохраненные&nbsp;статьи</a>
-                </li>
-                <li class="list__item list__item_type_mobile-popup">
-                  <button class="mobile-menu-popup__button">Авторизоваться
-                    <!--  mobile-menu-popup__btn-logout-icon_hidden - скрывает значек logout -->
-                    <svg class="mobile-menu-popup__btn-logout-icon mobile-menu-popup__btn-logout-icon_hidden"
-                         width="24" height="24"
-                         viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
-                    </svg>
-                  </button>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </section>
     </section>
     <div class="header__border-line"></div>
     <section class="header-content header-content_content-position_left saved-articles">
       <h4 class="header-content__subtitle">Сохраненные статьи</h4>
-        <h2 class="header-content__title header-content__title_mrgn-top_0">
-          <span class="saved-articles__span-name">Грета</span>, у вас <span
-                class="saved-articles__span-articles-counter">5</span> сохраненных статей
-        </h2>
-        <p class="header-content__subtitle">По ключевым словам: <span
-                class="saved-articles__span-keyword-articles">Природа, Тайга и 2 другим</span></p>
+      <h2 class="header-content__title header-content__title_mrgn-top_0">
+        <span class="saved-articles__span-name">Грета</span>, у вас <span
+          class="saved-articles__span-articles-counter">5</span> сохраненных статей
+      </h2>
+      <p class="header-content__subtitle">По ключевым словам: <span
+          class="saved-articles__span-keyword-articles">Природа, Тайга и 2 другим</span></p>
     </section>
   </header>
 
   <main class="main">
+    <!-- popup_visible - открывает попап -->
+    <section class="popup"></section>
+
+    <template class="mobile-menu-popup">
+      <div class="popup__wrapper popup__wrapper_type_mobile-menu">
+        <div class="popup__content popup__content_type_mobile-menu">
+          <div class="popup__mobile-menu-header">NewsExplorer</div>
+          <div class="popup__border-line"></div>
+          <nav class="popup__mobile-menu-nav header-top-panel__nav">
+            <ul class="list popup__mobile-menu-links header-top-panel__links">
+              <li class="list__item list__item_type_mobile-popup">
+                <a href="./main.html"
+                  class="links header-top-panel__link">Главная</a>
+              </li>
+              <li class="list__item list__item_type_mobile-popup">
+                <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
+                <a href="./articles.html"
+                  class="links header-top-panel__link header-top-panel__link_hidden">Сохраненные&nbsp;статьи</a>
+              </li>
+              <li class="list__item list__item_type_mobile-popup">
+                <button class="popup__button popup__button_type_mobile-menu">Авторизоваться
+                  <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
+                  <svg class="header-top-panel__btn-logout-icon" width="24" height="24"
+                    viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+                  </svg>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <svg class="popup__close popup__close_type_mobile-menu" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+          fill="white" />
+        <path
+          d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+          fill="white" />
+      </svg>
+    </template>
 
     <!-- main-content_is-visible - показать блок с результатами поиска -->
-    <section id="search-result"
-             class="main-content main-content_type_saved-articles main-content_is-visible">
+    <section id="search-result" class="main-content main-content_type_saved-articles main-content_is-visible">
 
       <div class="main-content__grid-template">
         <a href="https://zen.yandex.ru/" class="card">
           <picture>
-            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка"
-                 class="card__img">
+            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка" class="card__img">
           </picture>
           <p class="card__date">2 августа, 2019</p>
           <h3 class="card__title">Национальное достояние – парки</h3>
@@ -131,8 +128,7 @@
         </a>
         <a href="https://zen.yandex.ru/" class="card">
           <picture>
-            <img src="<%=require('../../images/image_06.png')%>" alt="Новостная картинка"
-                 class="card__img">
+            <img src="<%=require('../../images/image_06.png')%>" alt="Новостная картинка" class="card__img">
           </picture>
           <p class="card__date">2 августа, 2019</p>
           <h3 class="card__title">Лесные огоньки: история одной фотографии</h3>
@@ -149,8 +145,7 @@
         </a>
         <a href="https://meduza.io/" class="card">
           <picture>
-            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка"
-                 class="card__img">
+            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка" class="card__img">
           </picture>
           <p class="card__date">2 августа, 2019</p>
           <h3 class="card__title">Лесные огоньки: история одной фотографии</h3>
@@ -170,8 +165,7 @@
         </a>
         <a href="https://zen.yandex.ru/" class="card">
           <picture>
-            <img src="<%=require('../../images/image_06.png')%>" alt="Новостная картинка"
-                 class="card__img">
+            <img src="<%=require('../../images/image_06.png')%>" alt="Новостная картинка" class="card__img">
           </picture>
           <p class="card__date">2 августа, 2019</p>
           <h3 class="card__title">Лесные огоньки: история одной фотографии</h3>
@@ -201,17 +195,14 @@
           <a class="links footer-links__link" href="./main.html">Главная</a>
         </li>
         <li class="list__item footer-links__list-item-for-media-query">
-          <a class="links footer-links__link" href="https://praktikum.yandex.ru/"
-             target="_blank">Яндекс.Практикум</a>
+          <a class="links footer-links__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a>
         </li>
       </ul>
     </nav>
     <div class="footer-nav">
       <ul class="list footer-social-links">
         <li class="list__item">
-          <a class="links footer-social-links__icon"
-             href="https://github.com/nik-di"
-             target="_blank">
+          <a class="links footer-social-links__icon" href="https://github.com/nik-di" target="_blank">
             <picture>
               <source srcset="<%=require('../../images/social-icon_gh.svg')%>">
               <img src="./images/social-icon_gh.png" alt="Logo Github">
@@ -219,9 +210,7 @@
           </a>
         </li>
         <li class="list__item">
-          <a class="links footer-social-links__icon"
-             href="https://facebook.com"
-             target="_blank">
+          <a class="links footer-social-links__icon" href="https://facebook.com" target="_blank">
             <picture>
               <source srcset="<%=require('../../images/social-icon_fb.svg')%>">
               <img src="./images/social-icon_fb.png" alt="Logo Fb">

@@ -1,0 +1,6 @@
+.popup__content.popup__content_size_s {
+  height: 150px;
+  min-height: 170px;
+  max-width: 480px;
+  min-width: 340px;
+}

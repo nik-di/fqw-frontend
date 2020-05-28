@@ -1,0 +1,7 @@
+.popup__border-line {
+  width: 100%;
+  border-bottom: 1px solid rgba(209, 210, 214, 1);
+  margin: 1px 0 0 0;
+  flex-basis: 75px;
+}
+  

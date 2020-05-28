@@ -12,11 +12,9 @@
 @import url(../../blocks/footer/footer.css);
 @import url(../../blocks/card/card.css);
 @import url(../../blocks/main-content/main-content.css);
+@import url(../../blocks/page/page.css);
+@import url(../../blocks/popup/popup.css);
 
 .html {
   font-size: 16px;
-}
-
-.page {
-  margin: 0 auto;
 }

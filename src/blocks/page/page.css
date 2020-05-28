@@ -1,0 +1,5 @@
+@import url(./_overflow-y-hidden/page_overflow-y-hidden.css);
+
+.page {
+  margin: 0 auto;
+}
