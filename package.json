@@ -43,7 +43,8 @@
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
-    "core-js": "3.6.5"
+    "core-js": "3.6.5",
+    "device-detector-js": "2.2.1"
   },
   "browserslist": [
     "Chrome >= 64",
