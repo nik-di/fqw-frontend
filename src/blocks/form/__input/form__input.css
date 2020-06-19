@@ -1,4 +1,4 @@
-.popup__input {
+.form__input {
   width: 100%;
   border: none;
   border-bottom: 1px solid #d4d4d4;
@@ -14,19 +14,23 @@
   outline: none;
 }
 
-.popup__input:focus {
+.form__input:not(:valid) {
+  border-bottom: 1px solid #c00000a2;
+}
+
+.form__input:focus {
   border-bottom: 1px solid #858585;
 }
 
-.popup__input:invalid + .popup__error {
-  animation: errors .9s ease-in-out forwards;
+.form__input:invalid + .form__error_active {
+  animation: errorsText .9s ease-in-out forwards;
 }
 
-@keyframes errors {
+@keyframes errorsText {
   from {
-    opacity: 0; 
+    opacity: 0;
   }
-  
+
   to {
     opacity: 1;
   }

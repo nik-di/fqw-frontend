@@ -1,6 +1,7 @@
 .popup__content.popup__content_type_mobile-menu {
   width: 100%;
   max-width: unset;
+  min-height: 300px;
   height: 100%;
   padding: 0;
   flex-direction: column;

@@ -1,7 +1,8 @@
+import './popup.css';
 import BaseComponent from "../../js/components/BaseComponent";
 
 export default class Popup extends BaseComponent {
-  constructor(popupTemplate, popupOptions, dependentPopupCallback) {
+  constructor(popupTemplate, popupOptions, dependentPopup) {
     super();
 
     this.popupTemplate = popupTemplate;
@@ -32,7 +33,7 @@ export default class Popup extends BaseComponent {
     this._handleEscapeKeydown = this._handleEscapeKeydown.bind(this);
     this._handleLinkToAnotherPopup = this._handleLinkToAnotherPopup.bind(this);
 
-    this.dependetPopupCallback = dependentPopupCallback;
+    this.callDependetPopup = dependentPopup;
   }
 
   _setContent() {
@@ -78,14 +79,14 @@ export default class Popup extends BaseComponent {
   _handleLinkToAnotherPopup(event) {
     if (event.target === this.popupLink) {
       this.close();
-      this.dependetPopupCallback();
+      this.callDependetPopup();
       return;
     }
   }
 
   _handlers() {
     const handlersArr = [
-      [document, 'click', this._handleCloseClickEvent],
+      [document, 'mousedown', this._handleCloseClickEvent],
       [document, 'keydown', this._handleEscapeKeydown],
       [document, 'click', this._handleLinkToAnotherPopup]
     ];

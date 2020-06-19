@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Nikishin D.I.">
-  <meta name="description" content="Сервис для поиска происходящих в мире событий по ключевому слову или словам">
+  <meta name="description"
+        content="Сервис для поиска происходящих в мире событий по ключевому слову или словам">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css%>">
   <link rel="shortcut icon" href="<%=require('../../images/favicon.png')%>" type="image/x-icon">
   <title>News Explorer: Main page</title>
@@ -18,28 +19,33 @@
     <section class="header-top-panel">
       <h3 class="header-top-panel__title" lang="en">NewsExplorer</h3>
       <div class="mobile-menu-btn mobile-menu-btn_color_white">
-        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2"
+             xmlns="http://www.w3.org/2000/svg">
           <rect width="16" height="2" /></svg>
-        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2"
+             xmlns="http://www.w3.org/2000/svg">
           <rect width="16" height="2" /></svg>
       </div>
       <nav class="header-top-panel__nav">
         <ul class="list header-top-panel__links">
           <li class="list__item">
             <!-- header-top-panel__link_active - нижняя полоса под ссылкой -->
-            <a href="./main.html" class="links header-top-panel__link header-top-panel__link_active">Главная</a>
+            <a href="./main.html"
+               class="links header-top-panel__link header-top-panel__link_active">Главная</a>
           </li>
           <li class="list__item">
             <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
-            <a href="./articles.html" class="links header-top-panel__link">Сохраненные&nbsp;статьи</a>
+            <a href="./articles.html"
+               class="links header-top-panel__link header-top-panel__link-to-saved-page">Сохраненные&nbsp;статьи</a>
           </li>
           <li class="list__item">
-            <button class="header-top-panel__button">Авторизоваться
+            <button data-is-logged="true" class="header-top-panel__button">Авторизоваться
               <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
-              <svg class="header-top-panel__btn-logout-icon header-top-panel__btn-logout-icon_hidden" width="24"
-                height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <svg class="header-top-panel__btn-logout-icon header-top-panel__btn-logout-icon_hidden"
+                   width="24"
+                   height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+                      d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
               </svg>
             </button>
           </li>
@@ -51,13 +57,19 @@
       <h1 class="header-content__title">Что в мире творится?</h1>
       <p class="header-content__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в
         своём личном кабинете.</p>
-      <form novalidate class="search-form">
-        <input required class="search-form__input" type="text" name="input" placeholder="Введите тему новости"
-          id="input-search" autocomplete="off" pattern="^(([А-ЯЁ])|([A-Z]))?(([а-яё\s\d]{2,})|([a-z\s\d]{2,}))$">
-        <button class="links search-form__button">Искать</button>
+      <form class="form search-form">
+        <input required
+               tabindex="1"
+               class="form__input search-form__input"
+               type="text"
+               name="input"
+               placeholder="Введите тему новости"
+               id="input-search" autocomplete="off"
+               pattern="^(([А-ЯЁ])|([A-Z]))?(([а-яё\s\d]{2,})|([a-z\s\d]{2,}))$">
+        <button disabled tabindex="2" class="form__button links search-form__button">Искать</button>
       </form>
       <!--  error_active - ошибка ввода в инпут -->
-      <div class="error"></div>
+      <div class="form__error error">Df</div>
     </section>
   </header>
 
@@ -77,15 +89,19 @@
               </li>
               <li class="list__item list__item_type_mobile-popup">
                 <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
-                <a href="./articles.html" class="links header-top-panel__link">Сохраненные&nbsp;статьи</a>
+                <a href="./articles.html"
+                   class="links header-top-panel__link header-top-panel__link-to-saved-page">Сохраненные&nbsp;статьи</a>
               </li>
               <li class="list__item list__item_type_mobile-popup">
-                <button class="popup__link popup__button popup__button_type_mobile-menu">Авторизоваться
+                <button data-is-logged="true"
+                        class="popup__link popup__button popup__button_type_mobile-menu header-top-panel__button">Авторизоваться
                   <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
-                  <svg class="header-top-panel__btn-logout-icon header-top-panel__btn-logout-icon_hidden" width="24"
-                    height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                  <svg class="header-top-panel__btn-logout-icon header-top-panel__btn-logout-icon_hidden"
+                       width="24"
+                       height="24" viewBox="0 0 24 24" fill="white"
+                       xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
-                      d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+                          d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
                   </svg>
                 </button>
               </li>
@@ -93,13 +109,14 @@
           </nav>
         </div>
       </div>
-      <svg class="popup__close popup__close_type_mobile-menu" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="popup__close popup__close_type_mobile-menu" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
         <path
-          d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-          fill="white" />
+              d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+              fill="white" />
         <path
-          d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-          fill="white" />
+              d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+              fill="white" />
       </svg>
     </template>
 
@@ -107,24 +124,38 @@
       <div class="popup__wrapper">
         <div class="popup__content">
           <h2 class="popup__title">Вход</h2>
-          <form class="popup__form">
-            <div class="popup__field">
-              <label class="popup__label" for="enter-email">Email</label>
-              <input autocomplete="off" pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$"
-                type="text" class="popup__input" id="enter-email" placeholder="Enter email">
-              <span class="popup__error">e-mail в формате: sega@yandex.ru</span>
+          <form novalidate class="form" name="auth-form">
+            <div class="form__field">
+              <label class="form__label" for="auth-email">Email</label>
+              <input required
+                     tabindex="1"
+                     autocomplete="off"
+                     pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$"
+                     type="text"
+                     class="form__input"
+                     id="auth-email"
+                     placeholder="Enter email">
+              <span class="form__error">e-mail в формате: sega@yandex.ru</span>
             </div>
-            <div class="popup__field">
-              <label class="popup__label" for="enter-pass">Password</label>
-              <input autocomplete="off" minlength="6" type="text" class="popup__input" id="enter-pass"
-                placeholder="Enter password">
-              <span class="popup__error">пароль должен быть больше 6 символов</span>
+            <div class="form__field">
+              <label class="form__label" for="auth-pass">Password</label>
+              <input required
+                     tabindex="2"
+                     autocomplete="off"
+                     minlength="6"
+                     type="text"
+                     class="form__input"
+                     id="auth-pass"
+                     placeholder="Enter password">
+              <span class="form__error">пароль должен быть больше 6 символов</span>
             </div>
-            <div class="popup__field">
-              <!--  popup__button_disabled - деактивация кнопки попапа -->
-              <button disabled class="popup__button popup__button_disabled">Войти</button>
+            <div class="form__field">
+              <button disabled
+                      tabindex="3"
+                      class="form__button">Войти</button>
+              <!-- form__server-error_visible - видимая ошибка -->
               <span
-                class="popup__error popup__error_order_1 popup__error_position_center popup__error_margin popup__error_server-msg">ошибка
+                    class="form__error error form__server-error form__server-error_order_1 form__server-error_position_center form__server-error_margin">ошибка
                 сервера</span>
             </div>
             <div class="popup__pretext">или&nbsp;
@@ -134,11 +165,11 @@
         </div>
         <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-            fill="white" />
+                d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+                fill="white" />
           <path
-            d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-            fill="white" />
+                d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+                fill="white" />
         </svg>
       </div>
     </template>
@@ -147,30 +178,50 @@
       <div class="popup__wrapper">
         <div class="popup__content">
           <h2 class="popup__title">Регистрация</h2>
-          <form class="popup__form">
-            <div class="popup__field">
-              <label class="popup__label" for="reg-email">Email</label>
-              <input autocomplete="off" pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$"
-                type="text" class="popup__input" id="reg-email" placeholder="Enter email">
-              <span class="popup__error">e-mail в формате: sega@yandex.ru</span>
+          <form class="form" name="registration-form">
+            <div class="form__field">
+              <label class="form__label" for="reg-email">Email</label>
+              <input required
+                     tabindex="1"
+                     autocomplete="off"
+                     pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$"
+                     type="text"
+                     class="form__input"
+                     id="reg-email"
+                     placeholder="Enter email">
+              <span class="form__error">e-mail в формате: sega@yandex.ru</span>
             </div>
-            <div class="popup__field">
-              <label class="popup__label" for="reg-pass">Password</label>
-              <input autocomplete="off" minlength="6" type="text" class="popup__input" id="reg-pass"
-                placeholder="Enter password">
-              <span class="popup__error">пароль должен быть больше 6 символов</span>
+            <div class="form__field">
+              <label class="form__label" for="reg-pass">Password</label>
+              <input required
+                     tabindex="2"
+                     autocomplete="off"
+                     minlength="6"
+                     type="text"
+                     class="form__input"
+                     id="reg-pass"
+                     placeholder="Enter password">
+              <span class="form__error">пароль должен быть больше 6 символов</span>
             </div>
-            <div class="popup__field">
-              <label class="popup__label" for="reg-name">Name</label>
-              <input autocomplete="off" minlength="2" type="text" class="popup__input" id="reg-name"
-                placeholder="Enter name">
-              <span class="popup__error">имя должно быть больше 2 символов</span>
+            <div class="form__field">
+              <label class="form__label" for="reg-name">Name</label>
+              <input required
+                     tabindex="3"
+                     autocomplete="off"
+                     minlength="2"
+                     type="text"
+                     class="form__input"
+                     id="reg-name"
+                     placeholder="Enter name">
+              <span class="form__error">имя должно быть больше 2 символов</span>
             </div>
-            <div class="popup__field">
+            <div class="form__field">
               <!--  popup__button_disabled - деактивация кнопки попапа -->
-              <button disabled class="popup__button popup__button_disabled">Зарегистрироваться</button>
+              <button disabled
+                      tabindex="4"
+                      class="form__button">Зарегистрироваться</button>
               <span
-                class="popup__error popup__error_order_1 popup__error_position_center popup__error_margin popup__error_server-msg">ошибка
+                    class="form__error error form__server-error form__server-error form__server-error_order_1 form__server-error_position_center form__server-error_margin">ошибка
                 сервера</span>
             </div>
             <div class="popup__pretext">или&nbsp;
@@ -180,11 +231,11 @@
         </div>
         <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-            fill="white" />
+                d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+                fill="white" />
           <path
-            d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-            fill="white" />
+                d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+                fill="white" />
         </svg>
       </div>
     </template>
@@ -199,11 +250,11 @@
         </div>
         <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-            fill="white" />
+                d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+                fill="white" />
           <path
-            d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-            fill="white" />
+                d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+                fill="white" />
         </svg>
       </div>
     </template>
@@ -219,7 +270,8 @@
       <div class="preloader-nothing preloader-nothing_visible">
         <picture>
           <source srcset="<%=require('../../images/not-found_v1.svg')%>">
-          <img class="preloader-nothing__img" src="<%=require('../../images/not-found_v1.svg')%>" alt="Грустный смайл">
+          <img class="preloader-nothing__img" src="<%=require('../../images/not-found_v1.svg')%>"
+               alt="Грустный смайл">
         </picture>
         <h3 class="preloader-nothing__title">Ничего не найдено</h3>
         <p class="preloader-nothing__subtitle">К сожалению по вашему запросу
@@ -236,7 +288,8 @@
       <div class="main-content__grid-template">
         <a href="https://zen.yandex.ru/" class="card">
           <picture>
-            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка" class="card__img">
+            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка"
+                 class="card__img">
           </picture>
           <p class="card__date">2 августа, 2019</p>
           <h3 class="card__title">Национальное достояние – парки</h3>
@@ -252,7 +305,8 @@
         </a>
         <a href="https://zen.yandex.ru/" class="card">
           <picture>
-            <img src="<%=require('../../images/image_06.png')%>" alt="Новостная картинка" class="card__img">
+            <img src="<%=require('../../images/image_06.png')%>" alt="Новостная картинка"
+                 class="card__img">
           </picture>
           <p class="card__date">2 августа, 2019</p>
           <h3 class="card__title">Лесные огоньки: история одной фотографии</h3>
@@ -267,7 +321,8 @@
         </a>
         <a href="https://meduza.io/" class="card">
           <picture>
-            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка" class="card__img">
+            <img src="<%=require('../../images/image_05.png')%>" alt="Новостная картинка"
+                 class="card__img">
           </picture>
           <p class="card__date">2 августа, 2019</p>
           <h3 class="card__title">Лесные огоньки: история одной фотографии</h3>
@@ -314,14 +369,16 @@
           <a class="links footer-links__link" href="./main.html">Главная</a>
         </li>
         <li class="list__item footer-links__list-item-for-media-query">
-          <a class="links footer-links__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a>
+          <a class="links footer-links__link" href="https://praktikum.yandex.ru/"
+             target="_blank">Яндекс.Практикум</a>
         </li>
       </ul>
     </nav>
     <div class="footer-nav">
       <ul class="list footer-social-links">
         <li class="list__item">
-          <a class="links footer-social-links__icon" href="https://github.com/nik-di" target="_blank">
+          <a class="links footer-social-links__icon" href="https://github.com/nik-di"
+             target="_blank">
             <picture>
               <source srcset="<%=require('../../images/social-icon_gh.svg')%>">
               <img src="./images/social-icon_gh.png" alt="Logo Github">

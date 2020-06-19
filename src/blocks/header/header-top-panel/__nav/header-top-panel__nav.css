@@ -12,6 +12,10 @@
 
 @media screen and (max-width: 600px) {
   .header-top-panel__nav {
-    display: none;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect();
+    position: absolute;
   }
 }

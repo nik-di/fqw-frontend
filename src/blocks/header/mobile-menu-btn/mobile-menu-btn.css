@@ -3,19 +3,18 @@
 @import url(./_color/mobile-menu-btn_color_black.css);
 
 .mobile-menu-btn {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   height: 25px;
   cursor: url(../../../images/cursor_hand.cur), pointer;
 }
 
-.mobile-menu-btn:hover > * {
-  opacity: .8;
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
   .mobile-menu-btn {
-    display: flex;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect();
   }
 }

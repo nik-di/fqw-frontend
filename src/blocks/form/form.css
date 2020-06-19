@@ -1,0 +1,15 @@
+@import url(./__button/form__button.css);
+@import url(./__error/form__error.css);
+@import url(./__field/form__field.css);
+@import url(./__input/form__input.css);
+@import url(./__label/form__label.css);
+@import url(./__server-error/form__server-error.css);
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  width: 100%;
+}
