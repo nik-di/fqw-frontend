@@ -1,7 +1,6 @@
-@import url(../../fonts/fonts.css);
-@import url(../../blocks/header/header.css);
-@import url(../../blocks/header/header-top-panel/header-top-panel.css);
 @import url(../../blocks/header/header-content/header-content.css);
+@import url(../../fonts/fonts.css);
+@import url(../../blocks/header/header-top-panel/header-top-panel.css);
 @import url(../../blocks/header/header-content/_content-position/_center/header-content_content-position_center.css);
 @import url(../../blocks/list/list.css);
 @import url(../../blocks/footer/footer.css);
@@ -9,7 +8,6 @@
 @import url(../../blocks/card/card.css);
 @import url(../../blocks/main-content/main-content.css);
 @import url(../../blocks/preloader/preloader.css);
-@import url(../../blocks/popup/popup.css);
 @import url(../../blocks/error/error.css);
 @import url(../../blocks/page/page.css);
 

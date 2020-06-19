@@ -11,13 +11,20 @@ import {
   POPUP_CLOSE_CLASSNAME,
   LINK_TO_ANOTHER_POPUP_CLASSNAME,
   MAIN_SECTION_CLASSNAME,
+  FORM
 } from '../../js/constants/DOM-constants';
 import { isDesktop } from '../../js/utils/isDesktop';
 import Popup from '../../blocks/popup/Popup';
+import Form from '../../blocks/form/Form';
 import Header from '../../blocks/header/Header';
 
 localStorage.setItem('isLoggedIn', false);
 localStorage.setItem('userName', 'Dimon');
+
+const searchForm = new Form(document.querySelector('.search-form'));
+searchForm.start();
+
+const formCallback = (form) => new Form(form);
 
 // Header
 const headerHandler = () => {
@@ -71,8 +78,8 @@ const popupsOptions = {
   mainSectionClassname: MAIN_SECTION_CLASSNAME
 };
 
-const registrationPopup = new Popup(REGISTRATION_POPUP_TEMPLATE, popupsOptions, authPopupOpenHandler);
-const authPopup = new Popup(AUTH_POPUP_TEMPLATE, popupsOptions, regPopupOpenHandler);
+const registrationPopup = new Popup(REGISTRATION_POPUP_TEMPLATE, popupsOptions, authPopupOpenHandler, formCallback);
+const authPopup = new Popup(AUTH_POPUP_TEMPLATE, popupsOptions, regPopupOpenHandler, formCallback);
 const regSuccessPopup = new Popup(REG_SUCCESS_POPUP_TEMPLATE, popupsOptions, authPopupOpenHandler);
 
 document.addEventListener('click', authPopupHandler);
