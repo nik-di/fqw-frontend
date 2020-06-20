@@ -1,0 +1,107 @@
+export default class NewsExplorerApi {
+  constructor(baseUrl) {
+    this.url = baseUrl;
+  }
+
+  getArticles() {
+
+    return fetch(`${this.url}/articles`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+
+      .then(res => res.json())
+  }
+
+  createArticle(articleProps) {
+
+    return fetch(`${this.url}/articles`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ...articleProps })
+    })
+
+      .then(async (res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          const jsonResponse = await res.json()
+          return Promise.reject(jsonResponse);
+        }
+      })
+  }
+
+  removeArticle(articleId) {
+    return fetch(`${this.url}/articles/${articleId}`, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+
+      .then(async (res) => {
+        if (res.ok) {
+          return res;
+        } else {
+          const jsonResponse = await res.json()
+          return Promise.reject(jsonResponse);
+        }
+      })
+  }
+
+  signup(userProps) {
+    return fetch(`${this.url}/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ ...userProps })
+    })
+
+      .then(async (res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          const jsonResponse = await res.json()
+          return Promise.reject(jsonResponse);
+        }
+      })
+  }
+
+  signin(userProps) {
+    return fetch(`${this.url}/signin`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify({ ...userProps })
+    })
+
+      .then((res) => {
+        if (res.ok) {
+          return res;
+        } else {
+          return Promise.reject(res)
+        }
+      })
+  }
+
+  getUserData() {
+    return fetch(`${this.url}/users/me`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+
+      .then(async (res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          const jsonResponse = await res.json()
+          return Promise.reject(jsonResponse);
+        }
+      })
+  }
+
+}

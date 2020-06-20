@@ -18,5 +18,4 @@ export const
   POPUP_WRAPPER = document.querySelector('.popup__wrapper'),
   POPUP_CONTAINER = document.querySelector('.popup'),
   HEADER_TOP_PANEL_TITLE = document.querySelector('.header-top-panel__title'),
-  HEADER_TOP_PANEL_AUTH_BTN = document.querySelector('.header-top-panel__button'),
-  FORM = document.querySelector('form');
+  HEADER_TOP_PANEL_AUTH_BTN = document.querySelector('.header-top-panel__button');
