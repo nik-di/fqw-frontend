@@ -16,7 +16,7 @@ export default class Popup extends BaseComponent {
       linkToAnotherPopupClassname,
       mainSectionClassname
     } = popupOptions;
-    const [dependentPopup = null, formCallback = null] = dependences;
+    const [dependentPopupCallback = null, dependentFormCallback = null] = dependences;
 
     this.popupAnimation = popupAnimation;
     this.container = popupContainer;
@@ -35,8 +35,8 @@ export default class Popup extends BaseComponent {
     this._handleEscapeKeydown = this._handleEscapeKeydown.bind(this);
     this._handleLinkToAnotherPopup = this._handleLinkToAnotherPopup.bind(this);
 
-    this.callDependetPopup = dependentPopup;
-    this.formCallback = formCallback;
+    this.dependentPopupCallback = dependentPopupCallback;
+    this.dependentFormInstance = this.formInpopup && dependentFormCallback && dependentFormCallback(this.formInpopup);
   }
 
   _setContent() {
@@ -80,41 +80,44 @@ export default class Popup extends BaseComponent {
   }
 
   _handleLinkToAnotherPopup(event) {
-    if (event.target === this.popupLink && this.callDependetPopup) {
+    if ((event.target === this.popupLink) && this.dependentPopupCallback) {
       this.close();
-      this.callDependetPopup();
+      const anotherPopup = this.dependentPopupCallback();
+      anotherPopup.open();
       return;
     }
   }
 
-  _deactivateDependetForm() {
-    this.formCallback && this.formCallback(this.formInpopup).stop();
+  _deactivateDependentForm(form) {
+    if (!this.dependentFormInstance) return;
+    this.dependentFormInstance.stop();
   }
 
-  _activateDependetForm() {
-    this.formCallback && this.formCallback(this.formInpopup).start();
+  _activateDependentForm() {
+    if (!this.dependentFormInstance) return;
+    this.dependentFormInstance.start();
   }
 
   _handlers() {
     const handlersArr = [
-      [document, 'mousedown', this._handleCloseClickEvent],
-      [document, 'keydown', this._handleEscapeKeydown],
-      [document, 'click', this._handleLinkToAnotherPopup]
+      [this.container, 'mousedown', this._handleCloseClickEvent],
+      [this.container, 'keydown', this._handleEscapeKeydown],
+      [this.container, 'click', this._handleLinkToAnotherPopup]
     ];
     return handlersArr;
   }
 
   open() {
-    !!this.formInpopup && this._activateDependetForm();
     this._setPopupAnimation();
     this._setContent();
+    this._activateDependentForm();
     this.container.classList.add(this.containerVisibleModifier);
     this._toggleBodyScroll();
     this._setEventListeners(this._handlers());
   }
 
   close() {
-    !!this.formInpopup && this._deactivateDependetForm();
+    this._deactivateDependentForm();
     this._clearPopupAnimation();
     this._clearContent();
     this.container.classList.remove(this.containerVisibleModifier);

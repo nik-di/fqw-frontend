@@ -14,27 +14,90 @@ import {
 } from '../../js/constants/DOM-constants';
 import { NEWS_API_BASE_URL, NEWS_API_KEY, NEWS_EXPLORER_BASE_URL, PRAKTIKUM_PROXY_SERVER } from '../../js/constants/constants';
 import { isDesktop } from '../../js/utils/isDesktop';
+import { dateCorrectorToSpecificDate } from '../../js/utils/dateCorrectorToSpecificDate';
 import Popup from '../../blocks/popup/Popup';
 import Form from '../../blocks/form/Form';
 import Header from '../../blocks/header/Header';
 import NewsExplorerApi from '../../js/api/NewsExplorerApi';
 import NewsApi from '../../js/api/NewsApi';
-// new NewsApi(NEWS_API_BASE_URL, NEWS_API_KEY).getNews('хлеб', '&from=2020-06-18&to=2020-06-18&pageSize=100')
 
-localStorage.setItem('isLoggedIn', false);
-localStorage.setItem('userName', 'Dimon');
+const newsApi = new NewsApi(NEWS_API_BASE_URL, NEWS_API_KEY);
+const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 
-const searchForm = new Form(document.querySelector('.search-form'));
+/**
+ * Forms logic ↓
+ */
+const searchSubmit = (formInstance) => {
+  const formValues = formInstance.getSubmitInfo();
+  const newsOptions = {
+    from: dateCorrectorToSpecificDate().toISOString(),
+    to: new Date().toISOString(),
+    pageSize: 100
+  };
+  newsApi
+    .getNews(formValues, newsOptions)
+    .then((res) => {
+      localStorage.setItem('NewsResult', JSON.stringify(res));
+    })
+    .catch((err) => console.error('errrrrrrr', err))
+};
+
+const searchForm = new Form(document.querySelector('.search-form'), searchSubmit);
 searchForm.start();
 
-const formClassCallback = (form) => new Form(form);
+const signinSubmit = (formInstance) => {
+  const formValues = formInstance.getSubmitInfo();
+  newsExplorerApi
+    .signin(formValues)
+    .then((res) => {
+      if (res.ok) {
+        signinPopup.close();
+      }
+    })
+    .then(() => {
+      return newsExplorerApi.getUserData();
+    })
+    .then((res) => {
+      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('User', JSON.stringify(res));
+    })
+    .then(() => {
+      headerHandler();
+    })
+    .catch((err) => {
+      formInstance.setServerError(err.message);
+    })
+};
 
-// Header
+const signupSubmit = (formInstance) => {
+  const formValues = formInstance.getSubmitInfo();
+  newsExplorerApi
+    .signup(formValues)
+    .then((res) => {
+      callRegSuccesPopupOpen();
+    })
+    .catch((err) => {
+      const { message } = err;
+      if (message === Object(message)) {
+        formInstance.setServerError(message[0]);
+        return;
+      }
+      formInstance.setServerError(message);
+    })
+};
+
+const signupFormClassCallback = (form) => new Form(form, signupSubmit);
+const signinFormClassCallback = (form) => new Form(form, signinSubmit);
+// Forms logic end
+
+/**
+ * Header logic ↓
+ */
 const headerHandler = () => {
   const headerProps = {
     headerTextColor: 'white',
     isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
-    userName: localStorage.getItem('userName'),
+    userName: JSON.parse(localStorage.getItem('User')) && JSON.parse(localStorage.getItem('User')).name,
     linkToHiddenClassname: 'header-top-panel__link-to-saved-page',
     headerNavClassname: 'header-top-panel__nav'
   };
@@ -44,25 +107,26 @@ const headerHandler = () => {
 };
 
 isDesktop && headerHandler();
+// Header logic end
 
-const regPopupHandler = (ev) => {
+/**
+ * Popups logic ↓
+ */
+const signinPopupHandler = (ev) => {
   const isHeaderButton = ev.target === HEADER_TOP_PANEL_AUTH_BTN;
   const isAuthButton = !!HEADER_TOP_PANEL_AUTH_BTN.attributes['data-is-logged'].value === true;
   if (isHeaderButton && isAuthButton) {
-    registrationPopup.open();
+    signinPopup.open();
   }
 };
 
-const regPopupOpenHandler = () => {
-  registrationPopup.open();
-};
+const signupPopupCallback = () => signupPopup;
 
-const authPopupOpenHandler = () => {
-  authPopup.open();
-};
+const signinPopupCallback = () => signinPopup;
 
 const callRegSuccesPopupOpen = () => {
-  regSuccessPopup.open();
+  signinPopup.close();
+  signupSuccessPopup.open()
 };
 
 const MOBILE_MENU_POPUP_TEMPLATE = document.querySelector(`.${MOBILE_MENU_POPUP_CLASSNAME}`).cloneNode(true).content,
@@ -81,16 +145,17 @@ const popupsOptions = {
   mainSectionClassname: MAIN_SECTION_CLASSNAME
 };
 
-const registrationPopup = new Popup(REGISTRATION_POPUP_TEMPLATE, popupsOptions, authPopupOpenHandler, formClassCallback);
-const authPopup = new Popup(AUTH_POPUP_TEMPLATE, popupsOptions, regPopupOpenHandler, formClassCallback);
-const regSuccessPopup = new Popup(REG_SUCCESS_POPUP_TEMPLATE, popupsOptions, authPopupOpenHandler);
+const signupPopup = new Popup(REGISTRATION_POPUP_TEMPLATE, popupsOptions, signinPopupCallback, signupFormClassCallback);
+const signinPopup = new Popup(AUTH_POPUP_TEMPLATE, popupsOptions, signupPopupCallback, signinFormClassCallback);
+const signupSuccessPopup = new Popup(REG_SUCCESS_POPUP_TEMPLATE, popupsOptions, signinPopupCallback);
 
-document.addEventListener('click', regPopupHandler);
+isDesktop && document.addEventListener('click', signinPopupHandler);
+// Popups logic end
 
 /**
- * Mobile interactivity
+ * Mobile interactivity ↓
  */
-const mobileMenuPopup = new Popup(MOBILE_MENU_POPUP_TEMPLATE, popupsOptions, authPopupOpenHandler);
+const mobileMenuPopup = new Popup(MOBILE_MENU_POPUP_TEMPLATE, popupsOptions, signinPopupCallback);
 const mobileMenuHandler = (ev) => {
   if (ev.target === MOBILE_MENU_BUTTON ||
     ev.target.parentNode === MOBILE_MENU_BUTTON ||

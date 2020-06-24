@@ -3,16 +3,16 @@ export default class BaseComponent {
 
   _setEventListeners(listeners) {
     listeners.forEach(
-      ([element, eventName, handler]) => {
-        element.addEventListener(eventName, handler);
+      ([element, eventName, handler, once = false]) => {
+        element.addEventListener(eventName, handler, { once });
       }
     );
   }
 
   _removeEventListeners(listeners) {
     listeners.forEach(
-      ([element, eventName, handler]) => {
-        element.removeEventListener(eventName, handler);
+      ([element, eventName, handler, once = false]) => {
+        element.removeEventListener(eventName, handler, { once });
       }
     );
   }

@@ -5,9 +5,13 @@ export default class NewsApi {
   }
 
 
-  getNews(request, stringRequestOptions) {
+  getNews({ q }, { pageSize, from, to }) {
 
-    return fetch(`${this.url}?apiKey=${this.token}&q=${request}${stringRequestOptions}`)
+    return fetch(`${this.url}?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}`, {
+      headers: {
+        'x-api-key': this.token
+      }
+    })
 
       .then(this._getPromiseRes)
 

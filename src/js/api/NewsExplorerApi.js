@@ -51,12 +51,13 @@ export default class NewsExplorerApi {
   }
 
   signup(userProps) {
-    return fetch(`${this.url}/signup`, {
+    // return fetch(`${this.url}/signup`, {
+    return fetch('http://localhost:3000/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ...userProps })
+      body: JSON.stringify(userProps)
     })
 
       .then(async (res) => {
@@ -64,34 +65,37 @@ export default class NewsExplorerApi {
           return res.json();
         } else {
           const jsonResponse = await res.json()
-          return Promise.reject(jsonResponse);
+          return await Promise.reject(jsonResponse);
         }
       })
   }
 
   signin(userProps) {
-    return fetch(`${this.url}/signin`, {
+    // return fetch(`${this.url}/signin`, {
+    return fetch('http://localhost:3000/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       credentials: 'include',
-      body: JSON.stringify({ ...userProps })
+      body: JSON.stringify(userProps)
     })
 
-      .then((res) => {
+      .then(async (res) => {
         if (res.ok) {
           return res;
         } else {
-          return Promise.reject(res)
+          const jsonResponse = await res.json()
+          return await Promise.reject(jsonResponse);
         }
       })
   }
 
   getUserData() {
-    return fetch(`${this.url}/users/me`, {
-      method: 'GET',
-      credentials: 'include'
+    // return fetch(`${this.url}/users/me`, {
+    return fetch('http://localhost:3000/users/me', {
+      credentials: 'include',
+      method: 'GET'
     })
 
       .then(async (res) => {
