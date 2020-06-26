@@ -1,0 +1,8 @@
+.news-card__article-btn-del {
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/trash-icon.svg), url(../../../images/trash-icon.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: .5;
+}

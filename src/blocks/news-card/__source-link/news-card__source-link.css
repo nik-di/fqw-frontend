@@ -1,0 +1,14 @@
+.news-card__source-link {
+  width: calc(100% - 48px);
+  text-align: left;
+  color: #B6BCBF;
+  text-decoration: none;
+  margin: 20px 0 24px 0;
+  justify-self: flex-end;
+  font-family: roboto, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.1rem;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}

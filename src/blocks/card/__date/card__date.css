@@ -1,9 +1,0 @@
-.card__date {
-  width: calc(100% - 48px);
-  text-align: left;
-  color: #B6BCBF;
-  margin-top: 20px;
-  font-family: roboto, Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  font-weight: 200;
-}

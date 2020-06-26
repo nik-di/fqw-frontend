@@ -1,0 +1,10 @@
+@import url(./_marked/news-card__article-btn-mark-icon_marked.css);
+
+.news-card__article-btn-mark-icon {
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/bookmark.svg), url(../../../images/bookmark.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: .5;
+}

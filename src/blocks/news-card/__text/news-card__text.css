@@ -1,0 +1,14 @@
+.news-card__text {
+    width: calc(100% - 48px);
+    margin: 20px 0 0;
+    text-align: left;
+    color: #000000;
+    font-family: roboto, Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 1.12rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

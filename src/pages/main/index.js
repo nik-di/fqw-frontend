@@ -10,7 +10,9 @@ import {
   HEADER_TOP_PANEL_AUTH_BTN,
   POPUP_CLOSE_CLASSNAME,
   LINK_TO_ANOTHER_POPUP_CLASSNAME,
-  MAIN_SECTION_CLASSNAME
+  MAIN_SECTION_CLASSNAME,
+  CARD_LIST_CONTAINER,
+  CARD_LIST
 } from '../../js/constants/DOM-constants';
 import { NEWS_API_BASE_URL, NEWS_API_KEY, NEWS_EXPLORER_BASE_URL, PRAKTIKUM_PROXY_SERVER } from '../../js/constants/constants';
 import { isDesktop } from '../../js/utils/isDesktop';
@@ -20,9 +22,19 @@ import Form from '../../blocks/form/Form';
 import Header from '../../blocks/header/Header';
 import NewsExplorerApi from '../../js/api/NewsExplorerApi';
 import NewsApi from '../../js/api/NewsApi';
+import NewsCardList from '../../blocks/news-card-list/NewsCardList';
 
 const newsApi = new NewsApi(NEWS_API_BASE_URL, NEWS_API_KEY);
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
+
+/**
+ * NewsCardList logic ↓
+ */
+const callbackCardConstructor = (article) => `new NewsCard(${article})`;
+const newsCardList = new NewsCardList(CARD_LIST, CARD_LIST_CONTAINER, callbackCardConstructor);
+newsCardList.showCardListBlock();
+// newsCardList.renderCards(JSON.parse(localStorage.getItem('newsApiArticles')));
+// NewsCardList logic end
 
 /**
  * Forms logic ↓

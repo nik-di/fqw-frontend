@@ -1,0 +1,12 @@
+.news-card__article-btn-hint-msg {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: .75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: .9;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: block;
+}
