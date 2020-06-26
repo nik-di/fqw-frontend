@@ -6,26 +6,36 @@ export default class Header {
       headerTextColor,
       isLoggedIn,
       userName,
-      mobileMenuBtn,
       linkToHiddenClassname
     } = props;
 
     this.textColor = headerTextColor;
     this.isLogged = isLoggedIn;
     this.userName = userName;
-    this.mobileMenuBtn = mobileMenuBtn;
     this.headerNav = headerNavigation;
     this.headerButton = this.headerNav.querySelector('.header-top-panel__button');
     this.linkForHidden = this.headerNav.querySelector(`.${linkToHiddenClassname}`);
+    this.dataIsLoggedBtnAttr = this.headerButton.attributes['data-is-logged'];
   }
 
   _renderName() {
+    const initialBtnValue = 'Авторизоваться';
     if (this.isLogged) {
-      const button = this.headerButton;
-      const logoutIcon = button.querySelector('.header-top-panel__btn-logout-icon');
+      this.headerButton.textContent = this.userName;
+      return;
+    }
+    if (!this.isLogged) {
+      this.headerButton.textContent = initialBtnValue;
+    }
+  }
+
+  _renderLogoutIcon() {
+    const logoutIcon = this.headerNav.querySelector('.header-top-panel__btn-logout-icon');
+    if (this.isLogged) {
       logoutIcon.classList.remove('header-top-panel__btn-logout-icon_hidden');
-      button.textContent = this.userName;
-      button.insertAdjacentElement('beforeend', logoutIcon);
+    }
+    if (!this.isLogged) {
+      logoutIcon.classList.add('header-top-panel__btn-logout-icon_hidden');
     }
   }
 
@@ -44,14 +54,14 @@ export default class Header {
   }
 
   _changeRoleHeaderButton() {
-    const dataIsLoggedBtnAttr = this.headerButton.attributes['data-is-logged'];
     this.isLogged ?
-      dataIsLoggedBtnAttr.value = true :
-      dataIsLoggedBtnAttr.value = false;
+      this.dataIsLoggedBtnAttr.value = 'logged' :
+      this.dataIsLoggedBtnAttr.value = 'unlogged';
   }
 
   render() {
     this._renderName();
+    this._renderLogoutIcon();
     this._linkHidden();
     this._linkShow();
     this._changeRoleHeaderButton();

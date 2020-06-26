@@ -114,9 +114,18 @@ isDesktop && headerHandler();
  */
 const signinPopupHandler = (ev) => {
   const isHeaderButton = ev.target === HEADER_TOP_PANEL_AUTH_BTN;
-  const isAuthButton = !!HEADER_TOP_PANEL_AUTH_BTN.attributes['data-is-logged'].value === true;
+  const isAuthButton = HEADER_TOP_PANEL_AUTH_BTN.attributes['data-is-logged'].value === 'unlogged';
   if (isHeaderButton && isAuthButton) {
     signinPopup.open();
+    return;
+  }
+  if (isHeaderButton && !isAuthButton) {
+    newsExplorerApi.logout()
+      .then(() => {
+        localStorage.setItem('isLoggedIn', false);
+      })
+      .then(() => headerHandler())
+      .catch((err) => console.error('errr', err))
   }
 };
 

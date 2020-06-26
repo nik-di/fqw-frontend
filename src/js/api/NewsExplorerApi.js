@@ -108,4 +108,20 @@ export default class NewsExplorerApi {
       })
   }
 
+  logout() {
+    // return fetch(`${this.url}/users/me`, {
+    return fetch('http://localhost:3000/logout', {
+      credentials: 'include',
+      method: 'POST'
+    })
+
+      .then(async (res) => {
+        if (res.ok) {
+          return res;
+        } else {
+          const jsonResponse = await res.json()
+          return await Promise.reject(jsonResponse);
+        }
+      })
+  }
 }
