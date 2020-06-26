@@ -3,7 +3,6 @@
 @import url('./__card-container/news-card-list__card-container.css');
 @import url('./__title/news-card-list__title.css');
 @import url('./__button-show-more/news-card-list__button-show-more.css');
-@import url('./__button-show-more/_hidden/news-card-list__button-show-more_hidden.css');
 
 .news-card-list {
   display: none;
