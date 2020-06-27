@@ -11,10 +11,13 @@
   border-radius: 10px;
   box-shadow: -1px 0px 5px 0px rgba(50, 50, 50, 0.38);
   background-color: white;
-  cursor: url(../../../images/cursor_hand.cur), pointer;
   outline: none;
 }
 
-.news-card__article-btn:hover>* {
-  opacity: 1;
+.news-card__article-btn>input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }

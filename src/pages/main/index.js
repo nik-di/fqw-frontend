@@ -22,6 +22,7 @@ import Form from '../../blocks/form/Form';
 import Header from '../../blocks/header/Header';
 import NewsExplorerApi from '../../js/api/NewsExplorerApi';
 import NewsApi from '../../js/api/NewsApi';
+import NewsCard from '../../blocks/news-card/NewsCard';
 import NewsCardList from '../../blocks/news-card-list/NewsCardList';
 
 const newsApi = new NewsApi(NEWS_API_BASE_URL, NEWS_API_KEY);
@@ -30,10 +31,10 @@ const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 /**
  * NewsCardList logic ↓
  */
-const callbackCardConstructor = (article) => `new NewsCard(${article})`;
+const callbackCardConstructor = (article) => new NewsCard(article, { cardType: 'founded', isLogged: JSON.parse(localStorage.getItem('isLoggedIn')) });
 const newsCardList = new NewsCardList(CARD_LIST, CARD_LIST_CONTAINER, callbackCardConstructor);
 newsCardList.showCardListBlock();
-// newsCardList.renderCards(JSON.parse(localStorage.getItem('newsApiArticles')));
+newsCardList.renderCards(JSON.parse(localStorage.getItem('NewsResult')).articles);
 // NewsCardList logic end
 
 /**
@@ -49,6 +50,7 @@ const searchSubmit = (formInstance) => {
   newsApi
     .getNews(formValues, newsOptions)
     .then((res) => {
+      res.keyword = formValues.q;
       localStorage.setItem('NewsResult', JSON.stringify(res));
     })
     .catch((err) => console.error('errrrrrrr', err))

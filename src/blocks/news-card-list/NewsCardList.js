@@ -2,14 +2,13 @@ import './news-card-list.css';
 import BaseComponent from '../../js/components/BaseComponent';
 
 export default class NewsCardList extends BaseComponent {
-  constructor(cardListDOM, cardsContainer, cardConstructor) {
+  constructor(cardListDOM, cardsContainer, cardConstructor = null) {
     super();
     this.cardList = cardListDOM;
     this.cardsContainer = cardsContainer;
     this.cardAssembler = cardConstructor;
     this.articles = [];
     this.isMainPage = document.location.href.includes('main.html');
-    this.showMoreHandler = this._showMore.bind(this);
   }
 
   showCardListBlock() {
@@ -21,7 +20,7 @@ export default class NewsCardList extends BaseComponent {
   }
 
   _getCard(article) {
-    const { card } = this.cardAssembler(article).getCard();
+    const card = this.cardAssembler && this.cardAssembler(article).getCard();
     return card;
   }
 
@@ -32,12 +31,13 @@ export default class NewsCardList extends BaseComponent {
     this.articles.push(...articles);
     const FIRST_THREE_ARTCILE_NUM = 3;
     const firstThreeArticles = this.articles.splice(0, FIRST_THREE_ARTCILE_NUM);
-    // firstThreeArticles.forEach(article => {
-    //   this.cardsContainer.appendChild(this._getCard(article));
-    // });
+    firstThreeArticles.forEach(article => {
+      this.cardsContainer.appendChild(this._getCard(article));
+    });
+    console.log(this._handlers()[1])
     if (this.isMainPage && this.articles.length) {
       this._showButtonControl();
-      this._setEventListeners(this._handlers());
+      this._setEventListeners(this._handlers()[0]);
     }
   }
 
@@ -46,9 +46,9 @@ export default class NewsCardList extends BaseComponent {
     if (ev.target === button && this.articles.length) {
       const FIRST_THREE_ARTICLE_NUM = 3;
       const threeArticles = this.articles.splice(0, FIRST_THREE_ARTICLE_NUM);
-      // threeArticles.forEach(article => {
-      //   this.cardsContainer.appendChild(this._getCard(article));
-      // });
+      threeArticles.forEach(article => {
+        this.cardsContainer.appendChild(this._getCard(article));
+      });
       this._showButtonControl();
     }
   }
@@ -73,8 +73,9 @@ export default class NewsCardList extends BaseComponent {
   }
 
   _handlers() {
+    const showMoreHandler = this._showMore.bind(this);
     const handlersArr = [
-      [this.cardList, 'click', this.showMoreHandler]
+      [this.cardList, 'click', showMoreHandler]
     ];
     return handlersArr;
   }
