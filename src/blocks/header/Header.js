@@ -5,8 +5,7 @@ export default class Header {
     const {
       isMainPage,
       isLoggedIn,
-      userName,
-      linkToHiddenClassname
+      userName
     } = props;
 
     this.isMainPage = isMainPage;
@@ -14,7 +13,7 @@ export default class Header {
     this.userName = userName;
     this.headerNav = headerNavigation;
     this.headerButton = this.headerNav.querySelector('.header-top-panel__button');
-    this.linkForHidden = this.headerNav.querySelector(`.${linkToHiddenClassname}`);
+    this.linkForHidden = this.headerNav.querySelector('.header-top-panel__link-to-saved-page');
     this.dataIsLoggedBtnAttr = this.headerButton.attributes['data-is-logged'];
   }
 

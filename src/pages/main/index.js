@@ -71,6 +71,7 @@ const searchSubmit = (formInstance) => {
       return res.articles;
     })
     .then((articles) => {
+      newsCardList.clearContainer();
       preloader.preloaderClose();
       newsCardList.showCardListBlock();
       newsCardList.renderFirstCards(articles);
@@ -102,6 +103,7 @@ const signinSubmit = (formInstance) => {
     })
     .then(() => {
       headerHandler();
+      document.location.reload(true);
     })
     .catch((err) => {
       formInstance.setServerError(err.message);
@@ -136,9 +138,7 @@ const headerHandler = () => {
   const headerProps = {
     isMainPage: true,
     isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
-    userName: JSON.parse(localStorage.getItem('User')) && JSON.parse(localStorage.getItem('User')).name,
-    linkToHiddenClassname: 'header-top-panel__link-to-saved-page',
-    headerNavClassname: 'header-top-panel__nav'
+    userName: JSON.parse(localStorage.getItem('User')) && JSON.parse(localStorage.getItem('User')).name
   };
   const headerNav = isDesktop ? document.querySelector('.header-top-panel__nav') : document.querySelector('.popup__mobile-menu-nav');
   const headerInstance = new Header(headerNav, headerProps);
@@ -163,7 +163,10 @@ const signinPopupHandler = (ev) => {
       .then(() => {
         localStorage.setItem('isLoggedIn', false);
       })
-      .then(() => headerHandler())
+      .then(() => {
+        headerHandler()
+        document.location.reload(true);
+      })
       .catch((err) => console.error('errr', err))
   }
 };

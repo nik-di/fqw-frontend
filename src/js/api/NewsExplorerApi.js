@@ -5,8 +5,7 @@ export default class NewsExplorerApi {
 
   getArticles() {
 
-    // return fetch(`${this.url}/articles`, {s
-    return fetch('http://localhost:3000/articles', {
+    return fetch(`${this.url}/articles`, {
       method: 'GET',
       credentials: 'include',
     })
@@ -16,8 +15,7 @@ export default class NewsExplorerApi {
 
   createArticle(articleProps) {
 
-    // return fetch(`${this.url}/articles`, {
-    return fetch('http://localhost:3000/articles', {
+    return fetch(`${this.url}/articles`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -27,7 +25,6 @@ export default class NewsExplorerApi {
     })
 
       .then(async (res) => {
-        console.log(res)
         if (res.ok) {
           return res.json();
         } else {
@@ -38,8 +35,7 @@ export default class NewsExplorerApi {
   }
 
   removeArticle(articleId) {
-    // return fetch(`${this.url}/articles/${articleId}`, {
-    return fetch(`http://localhost:3000/articles/${articleId}`, {
+    return fetch(`${this.url}/articles/${articleId}`, {
       method: 'DELETE',
       credentials: 'include'
     })
@@ -55,8 +51,7 @@ export default class NewsExplorerApi {
   }
 
   signup(userProps) {
-    // return fetch(`${this.url}/signup`, {
-    return fetch('http://localhost:3000/signup', {
+    return fetch(`${this.url}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -75,8 +70,7 @@ export default class NewsExplorerApi {
   }
 
   signin(userProps) {
-    // return fetch(`${this.url}/signin`, {
-    return fetch('http://localhost:3000/signin', {
+    return fetch(`${this.url}/signin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -96,8 +90,7 @@ export default class NewsExplorerApi {
   }
 
   getUserData() {
-    // return fetch(`${this.url}/users/me`, {
-    return fetch('http://localhost:3000/users/me', {
+    return fetch(`${this.url}/users/me`, {
       credentials: 'include',
       method: 'GET'
     })
@@ -113,8 +106,7 @@ export default class NewsExplorerApi {
   }
 
   logout() {
-    // return fetch(`${this.url}/users/me`, {
-    return fetch('http://localhost:3000/logout', {
+    return fetch(`${this.url}/logout`, {
       credentials: 'include',
       method: 'POST'
     })

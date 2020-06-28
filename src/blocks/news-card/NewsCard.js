@@ -138,6 +138,7 @@ export default class NewsCard extends BaseComponent {
         const [showHint, hideHint, saveCard, delCard] = this._handlers();
         this._removeEventListeners([showHint, hideHint, delCard]);
         this.card.remove();
+        document.location.reload(true);
       })
       .catch((err) => {
         alert('По каким-то причинам сюда попала не Ваша карточка и Вы не можете её удалить...')

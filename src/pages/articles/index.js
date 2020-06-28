@@ -12,13 +12,14 @@ import {
   CARD_LIST_CONTAINER,
   CARD_LIST
 } from '../../js/constants/DOM-constants';
-import { NEWS_EXPLORER_BASE_URL, PRAKTIKUM_PROXY_SERVER } from '../../js/constants/constants';
+import { NEWS_EXPLORER_BASE_URL } from '../../js/constants/constants';
 import { isDesktop } from '../../js/utils/isDesktop';
 import Popup from '../../blocks/popup/Popup';
 import Header from '../../blocks/header/Header';
 import NewsExplorerApi from '../../js/api/NewsExplorerApi';
 import NewsCard from '../../blocks/news-card/NewsCard';
 import NewsCardList from '../../blocks/news-card-list/NewsCardList';
+import HeaderContent from '../../blocks/header/header-content/HeaderContent';
 
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 newsExplorerApi.getUserData().catch(() => {
@@ -26,6 +27,12 @@ newsExplorerApi.getUserData().catch(() => {
   const { origin } = document.location;
   document.location.href = `${origin}/main.html`;
 });
+
+/**
+ * HeaderContent logic ↓
+ */
+const headerContent = new HeaderContent(document.querySelector('.header-content'), JSON.parse(localStorage.getItem('User')).name);
+// HeaderContent logic end
 
 /**
  * NewsCardList logic ↓
@@ -45,7 +52,8 @@ newsExplorerApi
     if (!articles.length) return;
     newsCardList.showCardListBlock();
     newsCardList.renderAllCards(articles);
-    console.log([...document.querySelectorAll('.news-card__article-keyword')].map(card => card.textContent))
+    const keywordsArr = [...document.querySelectorAll('.news-card__article-keyword')].map(keywordElem => keywordElem.textContent);
+    headerContent.renderArticlesHeader(articles.length, keywordsArr);
   })
   .catch()
 // NewsCardList logic end
@@ -57,9 +65,7 @@ const headerHandler = () => {
   const headerProps = {
     isMainPage: false,
     isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
-    userName: JSON.parse(localStorage.getItem('User')) && JSON.parse(localStorage.getItem('User')).name,
-    linkToHiddenClassname: 'header-top-panel__link-to-saved-page',
-    headerNavClassname: 'header-top-panel__nav'
+    userName: JSON.parse(localStorage.getItem('User')) && JSON.parse(localStorage.getItem('User')).name
   };
   const headerNav = isDesktop ? document.querySelector('.header-top-panel__nav') : document.querySelector('.popup__mobile-menu-nav');
   const headerInstance = new Header(headerNav, headerProps);

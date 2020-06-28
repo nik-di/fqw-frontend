@@ -9,6 +9,8 @@ export default class NewsCardList extends BaseComponent {
     this.cardAssembler = cardConstructor;
     this.articles = [];
     this.isMainPage = document.location.href.includes('main.html');
+    this.showMoreButton = this.cardList.querySelector('button');
+    this.showMoreHandler = this._showMore.bind(this);
   }
 
   showCardListBlock() {
@@ -24,18 +26,27 @@ export default class NewsCardList extends BaseComponent {
     return card;
   }
 
-  renderFirstCards(articles) {
-    if (this.articles.length) {
+  clearContainer() {
+    if (this.cardsContainer.firstElementChild) {
       this._removeEventListeners(this._handlers());
+      while (this.cardsContainer.firstElementChild) {
+        this.cardsContainer.removeChild(this.cardsContainer.firstElementChild);
+      }
     }
+  }
+
+  renderFirstCards(articles) {
+    if (this.articles.length > 0) {
+      this.articles.length = 0;
+    };
     this.articles.push(...articles);
     const FIRST_THREE_ARTICLE_NUM = 3;
     const firstThreeArticles = this.articles.splice(0, FIRST_THREE_ARTICLE_NUM);
     firstThreeArticles.forEach(article => {
       this.cardsContainer.appendChild(this._getCard(article));
     });
-    if (this.isMainPage && this.articles.length) {
-      this._showButtonControl();
+    this._showButtonControl();
+    if (this.articles.length > 0) {
       this._setEventListeners(this._handlers());
     }
   }
@@ -48,8 +59,7 @@ export default class NewsCardList extends BaseComponent {
   }
 
   _showMore(ev) {
-    const button = this.cardList.querySelector('button');
-    if (ev.target === button && this.articles.length) {
+    if (ev.target === this.showMoreButton && this.articles.length) {
       const FIRST_THREE_ARTICLE_NUM = 3;
       const threeArticles = this.articles.splice(0, FIRST_THREE_ARTICLE_NUM);
       threeArticles.forEach(article => {
@@ -69,19 +79,16 @@ export default class NewsCardList extends BaseComponent {
   }
 
   _showButton() {
-    const button = this.cardList.querySelector('button');
-    button.removeAttribute('disabled');
+    this.showMoreButton.removeAttribute('disabled');
   }
 
   _hideButton() {
-    const button = this.cardList.querySelector('button');
-    button.setAttribute('disabled', true);
+    this.showMoreButton.setAttribute('disabled', '');
   }
 
   _handlers() {
-    const showMoreHandler = this._showMore.bind(this);
     const handlersArr = [
-      [this.cardList, 'click', showMoreHandler]
+      [this.showMoreButton, 'click', this.showMoreHandler]
     ];
     return handlersArr;
   }
