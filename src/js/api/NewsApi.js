@@ -4,7 +4,6 @@ export default class NewsApi {
     this.token = token;
   }
 
-
   getNews({ q }, { pageSize, from, to }) {
 
     return fetch(`${this.url}?q=${q}&from=${from}&to=${to}&pageSize=${pageSize}`, {

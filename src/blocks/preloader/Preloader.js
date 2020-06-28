@@ -29,6 +29,7 @@ export default class Preloader {
         <h3 class="preloader-nothing__title">Ничего не найдено</h3>
         <p class="preloader-nothing__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
     </div>`);
+    this.preloaderClose();
     switch (preloaderType) {
       case 'circle':
         this.preloaderContainer.insertAdjacentHTML('beforeend', circle);
@@ -46,7 +47,7 @@ export default class Preloader {
   preloaderClose() {
     const parentNode = this.preloaderContainer;
     while (parentNode.firstElementChild) {
-      parentNode.removeNode(parentNode.firstElementChild);
+      parentNode.removeChild(parentNode.firstElementChild);
     }
     parentNode.classList.remove(`${this.preloaderContainerClassname}_visible`);
   }

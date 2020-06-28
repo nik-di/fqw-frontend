@@ -42,8 +42,6 @@ const callbackCardConstructor = (article) => {
   });
 };
 const newsCardList = new NewsCardList(CARD_LIST, CARD_LIST_CONTAINER, callbackCardConstructor);
-newsCardList.showCardListBlock();
-newsCardList.renderFirstCards(JSON.parse(localStorage.getItem('NewsResult')).articles);
 // NewsCardList logic end
 
 /**
@@ -56,13 +54,31 @@ const searchSubmit = (formInstance) => {
     to: new Date().toISOString(),
     pageSize: 100
   };
+  preloader.showPreloader('circle');
   newsApi
     .getNews(formValues, newsOptions)
     .then((res) => {
+      if (!res.articles.length) {
+        preloader.showPreloader('nothing');
+        return null;
+      }
+      return res;
+    })
+    .then((res) => {
+      if (!res) return;
       res.keyword = formValues.q;
       localStorage.setItem('NewsResult', JSON.stringify(res));
+      return res.articles;
     })
-    .catch((err) => console.error('search-error', err))
+    .then((articles) => {
+      preloader.preloaderClose();
+      newsCardList.showCardListBlock();
+      newsCardList.renderFirstCards(articles);
+    })
+    .catch((err) => {
+      preloader.showPreloader('error');
+      console.error('search-error', err)
+    })
 };
 
 const searchForm = new Form(document.querySelector('.search-form'), searchSubmit);
@@ -96,7 +112,7 @@ const signupSubmit = (formInstance) => {
   const formValues = formInstance.getSubmitInfo();
   newsExplorerApi
     .signup(formValues)
-    .then((res) => {
+    .then(() => {
       callRegSuccesPopupOpen();
     })
     .catch((err) => {
