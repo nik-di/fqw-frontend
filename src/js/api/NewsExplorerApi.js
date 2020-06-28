@@ -5,7 +5,8 @@ export default class NewsExplorerApi {
 
   getArticles() {
 
-    return fetch(`${this.url}/articles`, {
+    // return fetch(`${this.url}/articles`, {s
+    return fetch('http://localhost:3000/articles', {
       method: 'GET',
       credentials: 'include',
     })
@@ -15,7 +16,8 @@ export default class NewsExplorerApi {
 
   createArticle(articleProps) {
 
-    return fetch(`${this.url}/articles`, {
+    // return fetch(`${this.url}/articles`, {
+    return fetch('http://localhost:3000/articles', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -25,6 +27,7 @@ export default class NewsExplorerApi {
     })
 
       .then(async (res) => {
+        console.log(res)
         if (res.ok) {
           return res.json();
         } else {
@@ -35,7 +38,8 @@ export default class NewsExplorerApi {
   }
 
   removeArticle(articleId) {
-    return fetch(`${this.url}/articles/${articleId}`, {
+    // return fetch(`${this.url}/articles/${articleId}`, {
+    return fetch(`http://localhost:3000/articles/${articleId}`, {
       method: 'DELETE',
       credentials: 'include'
     })

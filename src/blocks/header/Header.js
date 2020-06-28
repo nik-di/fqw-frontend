@@ -3,13 +3,13 @@ import './header.css';
 export default class Header {
   constructor(headerNavigation, props) {
     const {
-      headerTextColor,
+      isMainPage,
       isLoggedIn,
       userName,
       linkToHiddenClassname
     } = props;
 
-    this.textColor = headerTextColor;
+    this.isMainPage = isMainPage;
     this.isLogged = isLoggedIn;
     this.userName = userName;
     this.headerNav = headerNavigation;
@@ -62,8 +62,10 @@ export default class Header {
   render() {
     this._renderName();
     this._renderLogoutIcon();
-    this._linkHidden();
-    this._linkShow();
+    if (this.isMainPage) {
+      this._linkHidden();
+      this._linkShow();
+    }
     this._changeRoleHeaderButton();
   }
 }

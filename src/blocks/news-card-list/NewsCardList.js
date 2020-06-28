@@ -24,21 +24,27 @@ export default class NewsCardList extends BaseComponent {
     return card;
   }
 
-  renderCards(articles) {
+  renderFirstCards(articles) {
     if (this.articles.length) {
       this._removeEventListeners(this._handlers());
     }
     this.articles.push(...articles);
-    const FIRST_THREE_ARTCILE_NUM = 3;
-    const firstThreeArticles = this.articles.splice(0, FIRST_THREE_ARTCILE_NUM);
+    const FIRST_THREE_ARTICLE_NUM = 3;
+    const firstThreeArticles = this.articles.splice(0, FIRST_THREE_ARTICLE_NUM);
     firstThreeArticles.forEach(article => {
       this.cardsContainer.appendChild(this._getCard(article));
     });
-    console.log(this._handlers()[1])
     if (this.isMainPage && this.articles.length) {
       this._showButtonControl();
-      this._setEventListeners(this._handlers()[0]);
+      this._setEventListeners(this._handlers());
     }
+  }
+
+  renderAllCards(articles) {
+    this.articles.push(...articles);
+    this.articles.forEach(article => {
+      this.cardsContainer.appendChild(this._getCard(article));
+    });
   }
 
   _showMore(ev) {

@@ -11,19 +11,22 @@ export default class NewsCard extends BaseComponent {
 
   getCard() {
     const { isLogged, cardType } = this.cardOptions;
+    this.card.classList.add('news-card');
     if (cardType === 'saved') {
       this.card.href = this.article.link;
       this.card.setAttribute('data-card-id', this.article._id);
       this.card.insertAdjacentHTML('beforeend', this._getSavedCardTemplate(this.article));
+      this._setEventListeners([this._handlers()[3]]);
     } else {
       this.card.href = this.article.url;
       this.card.insertAdjacentHTML('beforeend', this._getFoundedCardTemplate(this.article));
+      this._checkboxEnabled(isLogged);
+      isLogged && this._setEventListeners([this._handlers()[2]]);
     }
-    console.log(this.card.querySelector('input').checked)
-    this.card.classList.add('news-card');
+    const [showHint, hideHint] = this._handlers();
     (isLogged && cardType === 'founded') ?
       null :
-      this._setEventListeners(this._handlers());
+      this._setEventListeners([showHint, hideHint]);
     return this.card;
   }
 
@@ -79,20 +82,17 @@ export default class NewsCard extends BaseComponent {
       keyword, title, text, date, source, image,
     } = articleContent;
     return (
-      `<picture>
-      <img src="${image}" alt="Новостная картинка"
-           class="news-card__img">
-    </picture>
+      `<picture><img src="${image}" alt="Новостная картинка" class="news-card__img"></picture>
     <p class="news-card__date">${date}</p>
     <h3 class="news-card__title">${title}</h3>
     <p class="news-card__text">${text}</p>
     <p class="news-card__source-link">${source}</p>
-    <div class="news-card__article-btn">
-    <div class="news-card__article-btn-del">
-    </div>
+    <label class="news-card__article-btn">
+      <input type="checkbox">
+      <span class="news-card__article-btn-del"></span>
+    </label>
   </div>
-  <div class="news-card__article-keyword">${keyword}
-    </div>`);
+  <div class="news-card__article-keyword">${keyword}</div>`);
   }
 
   _showHint() {
@@ -101,16 +101,61 @@ export default class NewsCard extends BaseComponent {
 
   _hideHint() {
     const hint = this.card.querySelector('.news-card__article-btn-hint');
-    setTimeout(() => hint.remove(), 100);
+    hint.remove();
+  }
+
+  _checkboxEnabled(isLogged) {
+    const checkbox = this.card.querySelector('.news-card__article-btn input[type="checkbox"]');
+    if (!isLogged) checkbox.setAttribute('disabled', '');
+    else checkbox.removeAttribute('disabled');
+  }
+
+  _saveCard(ev) {
+    const { api, keyword } = this.cardOptions;
+    const checkbox = ev.target;
+    const card = this.card;
+    const date = card.querySelector('.news-card__date').textContent;
+    const link = card.href;
+    const image = card.querySelector('.news-card__img').src;
+    const title = card.querySelector('.news-card__title').textContent;
+    const text = card.querySelector('.news-card__text').textContent;
+    const source = card.querySelector('.news-card__source-link').textContent;
+    if (!checkbox.checked) return;
+    api
+      .createArticle({ date, link, image, title, text, source, keyword })
+      .then((res) => {
+        checkbox.setAttribute('disabled', '');
+      })
+      .catch((err) => console.error('card-err', err));
+  }
+
+  _deleteCard() {
+    const cardId = this.card.attributes['data-card-id'].value;
+    const { api } = this.cardOptions;
+    api
+      .removeArticle(cardId)
+      .then(() => {
+        const [showHint, hideHint, saveCard, delCard] = this._handlers();
+        this._removeEventListeners([showHint, hideHint, delCard]);
+        this.card.remove();
+      })
+      .catch((err) => {
+        alert('По каким-то причинам сюда попала не Ваша карточка и Вы не можете её удалить...')
+        console.error('card-err', err);
+      });
   }
 
   _handlers() {
     const cardBtnForHint = this.card.querySelector('.news-card__article-btn');
     const showHint = this._showHint.bind(this);
     const hideHint = this._hideHint.bind(this);
+    const saveCard = this._saveCard.bind(this);
+    const delCard = this._deleteCard.bind(this);
     const handlersArr = [
       [cardBtnForHint, 'mouseover', showHint],
-      [cardBtnForHint, 'mouseout', hideHint]
+      [cardBtnForHint, 'mouseout', hideHint],
+      [cardBtnForHint, 'change', saveCard],
+      [cardBtnForHint, 'mousedown', delCard]
     ];
     return handlersArr;
   }

@@ -31,10 +31,17 @@ const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 /**
  * NewsCardList logic ↓
  */
-const callbackCardConstructor = (article) => new NewsCard(article, { cardType: 'founded', isLogged: JSON.parse(localStorage.getItem('isLoggedIn')) });
+const callbackCardConstructor = (article) => {
+  return new NewsCard(article, {
+    cardType: 'founded',
+    isLogged: JSON.parse(localStorage.getItem('isLoggedIn')),
+    keyword: JSON.parse(localStorage.getItem('NewsResult')).keyword,
+    api: newsExplorerApi
+  });
+};
 const newsCardList = new NewsCardList(CARD_LIST, CARD_LIST_CONTAINER, callbackCardConstructor);
 newsCardList.showCardListBlock();
-newsCardList.renderCards(JSON.parse(localStorage.getItem('NewsResult')).articles);
+newsCardList.renderFirstCards(JSON.parse(localStorage.getItem('NewsResult')).articles);
 // NewsCardList logic end
 
 /**
@@ -53,7 +60,7 @@ const searchSubmit = (formInstance) => {
       res.keyword = formValues.q;
       localStorage.setItem('NewsResult', JSON.stringify(res));
     })
-    .catch((err) => console.error('errrrrrrr', err))
+    .catch((err) => console.error('search-error', err))
 };
 
 const searchForm = new Form(document.querySelector('.search-form'), searchSubmit);
@@ -109,7 +116,7 @@ const signinFormClassCallback = (form) => new Form(form, signinSubmit);
  */
 const headerHandler = () => {
   const headerProps = {
-    headerTextColor: 'white',
+    isMainPage: true,
     isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
     userName: JSON.parse(localStorage.getItem('User')) && JSON.parse(localStorage.getItem('User')).name,
     linkToHiddenClassname: 'header-top-panel__link-to-saved-page',
