@@ -266,27 +266,8 @@
       </div>
     </template>
 
-    <!--preloader_visible - чтобы увидеть блок-->
-    <section class="preloader">
-      <!-- circle-preloader_visible - открывает попап -->
-      <div class="circle-preloader circle-preloader_visible">
-        <div class="circle-preloader__circle"></div>
-        <p class="circle-preloader__text">Идёт поиск новостей...</p>
-      </div>
-      <!-- preloader-nothing_visible - открывает попап -->
-      <div class="preloader-nothing preloader-nothing_visible">
-        <picture>
-          <source srcset="<%=require('../../images/not-found_v1.svg')%>">
-          <img class="preloader-nothing__img" src="<%=require('../../images/not-found_v1.svg')%>"
-               alt="Грустный смайл">
-        </picture>
-        <h3 class="preloader-nothing__title">Ничего не найдено</h3>
-        <p class="preloader-nothing__subtitle">К сожалению по вашему запросу
-          ничего не найдено.</p>
-      </div>
-    </section>
+    <section class="preloader"></section>
 
-    <!-- news-card-list_visible - показать блок с результатами поиска -->
     <section id="search-result" class="news-card-list">
       <div class="news-card-list__heading">
         <h2 class="news-card-list__title">Результаты поиска</h2>

@@ -1,10 +1,9 @@
 @import url(./__img/preloader-nothing__img.css);
 @import url(./__title/preloader-nothing__title.css);
 @import url(./__subtitle/preloader-nothing__subtitle.css);
-@import url(./_visible/preloader-nothing_visible.css);
 
 .preloader-nothing {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

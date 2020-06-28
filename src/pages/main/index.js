@@ -24,9 +24,11 @@ import NewsExplorerApi from '../../js/api/NewsExplorerApi';
 import NewsApi from '../../js/api/NewsApi';
 import NewsCard from '../../blocks/news-card/NewsCard';
 import NewsCardList from '../../blocks/news-card-list/NewsCardList';
+import Preloader from '../../blocks/preloader/Preloader';
 
 const newsApi = new NewsApi(NEWS_API_BASE_URL, NEWS_API_KEY);
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
+const preloader = new Preloader(document.querySelector('.preloader'));
 
 /**
  * NewsCardList logic ↓
