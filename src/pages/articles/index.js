@@ -23,7 +23,6 @@ import HeaderContent from '../../blocks/header/header-content/HeaderContent';
 
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 newsExplorerApi.getUserData().catch(() => {
-  window.stop();
   const { origin } = document.location;
   document.location.href = `${origin}/main.html`;
 });
@@ -31,7 +30,7 @@ newsExplorerApi.getUserData().catch(() => {
 /**
  * HeaderContent logic ↓
  */
-const headerContent = new HeaderContent(document.querySelector('.header-content'), JSON.parse(localStorage.getItem('User')).name);
+const headerContent = new HeaderContent(document.querySelector('.header-content'), localStorage.getItem('User') && JSON.parse(localStorage.getItem('User')).name);
 // HeaderContent logic end
 
 /**
