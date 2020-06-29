@@ -10,7 +10,8 @@ import {
   LINK_TO_ANOTHER_POPUP_CLASSNAME,
   MAIN_SECTION_CLASSNAME,
   CARD_LIST_CONTAINER,
-  CARD_LIST
+  CARD_LIST,
+  HEADER_TOP_PANEL_AUTH_BTN
 } from '../../js/constants/DOM-constants';
 import { NEWS_EXPLORER_BASE_URL } from '../../js/constants/constants';
 import { isDesktop } from '../../js/utils/isDesktop';
@@ -21,10 +22,14 @@ import NewsCard from '../../blocks/news-card/NewsCard';
 import NewsCardList from '../../blocks/news-card-list/NewsCardList';
 import HeaderContent from '../../blocks/header/header-content/HeaderContent';
 
+const relocatePage = () => {
+  const { pathname } = document.location;
+  document.location.href = document.location.href.replace(pathname, '/index.html')
+};
+
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 newsExplorerApi.getUserData().catch(() => {
-  const { origin } = document.location;
-  document.location.href = `${origin}/index.html`;
+  relocatePage();
 });
 
 /**
@@ -74,6 +79,20 @@ const headerHandler = () => {
 isDesktop && headerHandler();
 // Header logic end
 
+const logoutHandler = (ev) => {
+  const isHeaderButton = ev.target === HEADER_TOP_PANEL_AUTH_BTN;
+  const isAuthButton = HEADER_TOP_PANEL_AUTH_BTN.attributes['data-is-logged'].value === 'unlogged';
+  if (isHeaderButton && !isAuthButton) {
+    newsExplorerApi.logout()
+      .then(() => {
+        localStorage.setItem('isLoggedIn', false);
+        relocatePage();
+      })
+      .catch((err) => console.error('errr', err))
+  }
+};
+
+isDesktop && document.addEventListener('click', logoutHandler);
 /**
  * Mobile interactivity ↓
  */
