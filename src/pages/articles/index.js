@@ -41,7 +41,7 @@ const callbackCardConstructor = (article) => {
   return new NewsCard(article, {
     cardType: 'saved',
     isLogged: JSON.parse(localStorage.getItem('isLoggedIn')),
-    keyword: JSON.parse(localStorage.getItem('NewsResult')).keyword,
+    keyword: localStorage.getItem('NewsResult') && JSON.parse(localStorage.getItem('NewsResult')).keyword,
     api: newsExplorerApi
   });
 };
