@@ -24,7 +24,7 @@ import HeaderContent from '../../blocks/header/header-content/HeaderContent';
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 newsExplorerApi.getUserData().catch(() => {
   const { origin } = document.location;
-  document.location.href = `${origin}/main.html`;
+  document.location.href = `${origin}/index.html`;
 });
 
 /**

@@ -92,7 +92,7 @@ module.exports = (env) => {
       new HtmlWebpackPlugin({
         inject: false,
         template: './src/pages/main/index.html',
-        filename: 'main.html',
+        filename: 'index.html',
         chunks: ['main']
       }),
       new HtmlWebpackPlugin({
