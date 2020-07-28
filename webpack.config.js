@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = (env) => {
   const isDev = env.NODE_ENV === 'development';
@@ -102,6 +103,9 @@ module.exports = (env) => {
         chunks: ['articles']
       }),
       new WebpackMd5Hash(),
+      new webpack.DefinePlugin({
+        'NODE_ENV': JSON.stringify(env.NODE_ENV)
+      })
     ]
   });
 };

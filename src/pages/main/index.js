@@ -26,7 +26,8 @@ import NewsCard from '../../blocks/news-card/NewsCard';
 import NewsCardList from '../../blocks/news-card-list/NewsCardList';
 import Preloader from '../../blocks/preloader/Preloader';
 
-const newsApi = new NewsApi(NEWS_API_BASE_URL, NEWS_API_KEY);
+const isDev = NODE_ENV === 'development';
+const newsApi = new NewsApi(isDev ? NEWS_API_BASE_URL : PRAKTIKUM_PROXY_SERVER, NEWS_API_KEY);
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
 const preloader = new Preloader(document.querySelector('.preloader'));
 
