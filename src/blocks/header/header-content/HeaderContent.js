@@ -10,44 +10,53 @@ export default class HeaderContent {
     const cardQuantity = this.headerContent.querySelector('.saved-articles__span-articles-counter');
     cardQuantity.textContent = articleQuantity;
     const keywordSpan = this.headerContent.querySelector('.saved-articles__span-keyword-articles');
-    const keywords = [...new Set(keywordArr.map(word => word.toLowerCase()))];
-    switch (keywords.length) {
-      case 1:
-        keywordSpan.textContent = keywords.map(word => word[0].toUpperCase() + word.slice(1));
+    const wordsWithTag = this._sortByQuantity(this._reduceKeywords(keywordArr));
+    const preparedWords = wordsWithTag
+      .map(wordTag => wordTag.slice(0, 1))
+      .map(([word]) => word[0].toUpperCase() + word.slice(1));
+    this._renderKeywordsQuantity(preparedWords, keywordSpan);
+  }
+
+  _renderKeywordsQuantity(wordsArr, elemFromDOM) {
+    const [first, second, ...others] = wordsArr;
+    if (!first) return;
+
+    switch (true) {
+      case others.length === 1:
+        elemFromDOM.textContent = `${first}, ${second} и ${others}`;
         break;
-      case 2:
-      case 3:
-        keywordSpan.textContent = keywords.map(word => word[0].toUpperCase() + word.slice(1)).join(', ');
+      case others.length > 1:
+        elemFromDOM.textContent = `${first}, ${second} и ${others.length} другим`;
+        break;
+      case (second && !others.length):
+        elemFromDOM.textContent = `${first} и ${second}`;
         break;
       default:
-        const reducedObj = this._reduceKeywords(keywordArr);
-        const [first, second, ...oth] = this._sortByQuantity(reducedObj).map(el => Object.keys(el));
-        keywordSpan.textContent = `${first}, ${second} и ${oth.length} другим`;
+        elemFromDOM.textContent = first;
         break;
     }
   }
 
   _reduceKeywords(arr) {
-    return arr.reduce((acc, cur) => {
-      if (!acc.hash[cur]) {
-        acc.hash[cur] = { [cur]: 1 };
-        acc.map.set(acc.hash[cur], 1);
-        acc.result.push(acc.hash[cur]);
-      } else {
-        acc.hash[cur][cur] += 1;
-        acc.map.set(acc.hash[cur], acc.hash[cur][cur]);
+    return arr.reduce((acc, word, i, arr) => {
+      acc.hash[word] = (acc.hash[word] || 0) + 1;
+      if (i === arr.length - 1) {
+        const keys = Object.keys(acc.hash);
+        keys.forEach(fruitName => {
+          acc.arr.push([...[fruitName], acc.hash[fruitName]]);
+        })
+        return acc.arr;
       }
       return acc;
     }, {
-      hash: {},
-      map: new Map(),
-      result: []
+      arr: [],
+      hash: {}
     });
   }
 
   _sortByQuantity(reducedArr) {
-    return reducedArr.result.sort((a, b) => {
-      return reducedArr.map.get(b) - reducedArr.map.get(a);
+    return reducedArr.sort((a, b) => {
+      return b[1] - a[1];
     });
   }
 }
