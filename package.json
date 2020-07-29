@@ -7,7 +7,7 @@
     "build": "rimraf dist && webpack --env.NODE_ENV=production --mode production",
     "dev": "webpack-dev-server --env.NODE_ENV=development --mode development --hot --open --watch",
     "gh": "gh-pages -d dist",
-    "deploy": "npm run build && scp -r ./dist/* wearerun@130.193.48.5:/home/wearerun/fqw-frontend"
+    "deploy": "npm run build && scp -r ./dist/* wearerun@84.201.129.31:/home/wearerun/fqw-frontend"
   },
   "repository": {
     "type": "git",
