@@ -23,8 +23,7 @@ import NewsCardList from '../../blocks/news-card-list/NewsCardList';
 import HeaderContent from '../../blocks/header/header-content/HeaderContent';
 
 const relocatePage = () => {
-  const { pathname } = document.location;
-  document.location.href = document.location.href.replace(pathname, '/index.html')
+  document.location.href = './index.html';
 };
 
 const newsExplorerApi = new NewsExplorerApi(NEWS_EXPLORER_BASE_URL);
