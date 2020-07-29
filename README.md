@@ -1,10 +1,12 @@
 # Final work on html and css at the web development course
+
 <img src="https://img.shields.io/static/v1?label=ver&message=0.2.1&color=brightgreen">
-<img src="https://img.shields.io/static/v1?label=webpack&message=4.43.0&color=brightgreen">
-<img src="https://img.shields.io/static/v1?label=build&message=passing&color=brightgreen">
-<img src="https://img.shields.io/static/v1?label=build size&message=1.65MB&color=informational">
+<img src="https://img.shields.io/static/v1?label=webpack&message=4.43.0&color=blue">
+<img src="https://img.shields.io/static/v1?label=build&message=passing&color=green">
+<img src="https://img.shields.io/static/v1?label=build-size&message=1.65MB&color=informational">
 <img src="https://img.shields.io/github/issues-pr-closed-raw/nik-di/fqw-frontend">
 <img src="https://img.shields.io/website?url=https%3A%2F%2Fnews-explorer.website">
+
 ## [News Explorer](https://news-explorer.website/)
 
 Ссылка на проект https://github.com/nik-di/fqw-frontend
