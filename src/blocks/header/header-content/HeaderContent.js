@@ -42,9 +42,9 @@ export default class HeaderContent {
       acc.hash[word] = (acc.hash[word] || 0) + 1;
       if (i === arr.length - 1) {
         const keys = Object.keys(acc.hash);
-        keys.forEach(fruitName => {
-          acc.arr.push([...[fruitName], acc.hash[fruitName]]);
-        })
+        keys.forEach(key => {
+          acc.arr.push([...[key], acc.hash[key]]);
+        });
         return acc.arr;
       }
       return acc;
