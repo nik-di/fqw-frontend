@@ -2,8 +2,4 @@
 
 .header-top-panel__btn-logout-icon {
   margin-left: 5px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
 }

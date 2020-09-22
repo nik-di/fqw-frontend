@@ -1,6 +1,6 @@
 # Final work on html and css at the web development course
 
-<img src="https://img.shields.io/static/v1?label=ver&message=0.2.1&color=brightgreen">
+<img src="https://img.shields.io/static/v1?label=ver&message=0.2.2&color=brightgreen">
 <img src="https://img.shields.io/static/v1?label=webpack&message=4.43.0&color=blue">
 <img src="https://img.shields.io/static/v1?label=build&message=passing&color=green">
 <img src="https://img.shields.io/static/v1?label=build-size&message=1.65MB&color=informational">
@@ -37,8 +37,8 @@ __*Это сервис, в котором пользователь вводит 
 
  
 #### Впереди ещё много правок:
-1. *Не работает ссылка на главную страницу в футере;*
-2. *Поправить вёрстку кнопки авторизации. До авторизации, текст прижат к левой части кнопки;*
+1. *Не работает ссылка на главную страницу в футере;* `Update: ✔`
+2. *Поправить вёрстку кнопки авторизации. До авторизации, текст прижат к левой части кнопки;* `Update: ✔`
 3. *Переписать мобильное меню: наблюдается некорректная работа, мобильное меню является отдельным блоком и логика реализована отдельным скриптом;*
 4. *Реализовать более быстрый релокейт со траницы сохраненных статей, если не зарегестрированный пользователь перешёл по прямой ссылке;*
 5. *Заполнить блок "О себе";*

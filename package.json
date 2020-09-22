@@ -1,6 +1,6 @@
 {
   "name": "fqw-frontend",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "description": "Frontend of web diploma",
   "main": "index.js",
   "scripts": {
