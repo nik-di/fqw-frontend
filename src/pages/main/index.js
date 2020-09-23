@@ -66,7 +66,7 @@ const searchSubmit = (formInstance) => {
       return res;
     })
     .then((res) => {
-      if (!res) return;
+      if (!res) throw new Error('No result');
       res.keyword = formValues.q;
       localStorage.setItem('NewsResult', JSON.stringify(res));
       return res.articles;

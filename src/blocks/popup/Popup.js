@@ -73,7 +73,7 @@ export default class Popup extends BaseComponent {
 
   _handleEscapeKeydown(event) {
     const ESCAPE_KEYCODE = 27;
-    if (event.keyCode === ESCAPE_KEYCODE) {
+    if (event.keyCode === ESCAPE_KEYCODE || event.key === 'Escape') {
       this.close();
       return;
     }
@@ -101,7 +101,7 @@ export default class Popup extends BaseComponent {
   _handlers() {
     const handlersArr = [
       [this.container, 'mousedown', this._handleCloseClickEvent],
-      [this.container, 'keydown', this._handleEscapeKeydown],
+      [document, 'keydown', this._handleEscapeKeydown],
       [this.container, 'click', this._handleLinkToAnotherPopup]
     ];
     return handlersArr;
