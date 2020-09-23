@@ -11,6 +11,12 @@ export default class Form extends BaseComponent {
     this.serverErrorElement = this.form.querySelector('.form__server-error');
   }
 
+  _sanitizeInput(input) {
+    const plug = document.createElement('div');
+    plug.textContent = input.value;
+    return plug.innerHTML;
+  }
+
   _checkInputsValidity(form = this.form) {
     const inputs = form && [...form.querySelectorAll('input')];
     let checkResult = false;
@@ -67,7 +73,7 @@ export default class Form extends BaseComponent {
 
   getSubmitInfo() {
     const inputs = this.form && [...this.form.querySelectorAll('input')];
-    const inputsInfo = inputs.reduce((acc, input) => ({ ...acc, [input.name]: input.value }), {});
+    const inputsInfo = inputs.reduce((acc, input) => ({ ...acc, [input.name]: this._sanitizeInput(input) }), {});
     return inputsInfo;
   }
 
