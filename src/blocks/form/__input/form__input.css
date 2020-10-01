@@ -1,0 +1,37 @@
+.form__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #d4d4d4;
+  background-color: transparent;
+  box-sizing: border-box;
+  color: #000000;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: .8rem;
+  line-height: 2;
+  opacity: .9;
+  outline: none;
+}
+
+.form__input:not(:valid) {
+  border-bottom: 1px solid #c00000a2;
+}
+
+.form__input:focus {
+  border-bottom: 1px solid #858585;
+}
+
+.form__input:invalid + .form__error_active {
+  animation: errorsText .9s ease-in-out forwards;
+}
+
+@keyframes errorsText {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

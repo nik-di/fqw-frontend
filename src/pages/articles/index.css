@@ -1,0 +1,21 @@
+@import url(../../fonts/fonts.css);
+@import url(../../blocks/news-card-list/_type/news-card-list_type_saved-articles.css);
+@import url(../../blocks/header/header.css);
+@import url(../../blocks/header/_type/_saved-articles/header_type_saved-articles.css);
+@import url(../../blocks/header/header-top-panel/header-top-panel.css);
+@import url(../../blocks/header/header-top-panel/__button/_type_saved-articles/header-top-panel__button_type_saved-articles.css);
+@import url(../../blocks/header/header-content/header-content.css);
+@import url(../../blocks/header/header-content/__title/_mrgn-top/header-content__title_mrgn-top_0.css);
+@import url(../../blocks/saved-articles/saved-articles.css);
+@import url(../../blocks/news-card/__article-btn-del/news-card__article-btn-del.css);
+@import url(../../blocks/news-card/__article-keyword/news-card__article-keyword.css);
+@import url(../../blocks/list/list.css);
+@import url(../../blocks/footer/footer.css);
+@import url(../../blocks/news-card/news-card.css);
+@import url(../../blocks/news-card-list/news-card-list.css);
+@import url(../../blocks/page/page.css);
+@import url(../../blocks/popup/popup.css);
+
+.html {
+  font-size: 16px;
+}

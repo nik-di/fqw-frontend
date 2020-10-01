@@ -1,0 +1,7 @@
+@import url(./circle-preloader/circle-preloader.css);
+@import url(./preloader-nothing/preloader-nothing.css);
+@import url(./_visible/preloader_visible.css);
+
+.preloader {
+  display: none;
+}

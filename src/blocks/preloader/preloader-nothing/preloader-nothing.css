@@ -1,0 +1,10 @@
+@import url(./__img/preloader-nothing__img.css);
+@import url(./__title/preloader-nothing__title.css);
+@import url(./__subtitle/preloader-nothing__subtitle.css);
+
+.preloader-nothing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

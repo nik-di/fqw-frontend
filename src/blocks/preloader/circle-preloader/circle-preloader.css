@@ -1,0 +1,9 @@
+@import url('./__circle/circle-preloader__circle.css');
+@import url('./__text/circle-preloader__text.css');
+
+.circle-preloader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

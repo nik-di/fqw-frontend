@@ -1,0 +1,9 @@
+.popup__close.popup__close_type_mobile-menu {
+  opacity: 1;
+  position: fixed;
+  top: 21px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

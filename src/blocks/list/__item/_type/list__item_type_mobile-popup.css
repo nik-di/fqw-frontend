@@ -1,0 +1,12 @@
+@media screen and (max-width: 600px) {
+  .list__item.list__item_type_mobile-popup {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+  }
+  .list__item.list__item_type_mobile-popup:nth-of-type(3) {
+    justify-content: center;
+  }
+}

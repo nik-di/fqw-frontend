@@ -1,0 +1,12 @@
+.about-author__paragraph {
+  margin: 20px 0 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 700px) {
+  .about-author__paragraph {
+    margin: 10px 0 0;
+  }
+}

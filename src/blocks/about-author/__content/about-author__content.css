@@ -1,0 +1,27 @@
+.about-author__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: calc(100% - 200px);
+  max-height: 600px;
+}
+
+@media screen and (max-width: 900px) {
+  .about-author__content {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .about-author__content {
+    width: calc(100% - 80px);
+    padding: 40px 0 45px 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-author__content {
+    width: calc(100% - 30px);
+    flex-direction: column;
+  }
+}

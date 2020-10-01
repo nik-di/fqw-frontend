@@ -1,0 +1,11 @@
+.footer-social-links__icon {
+  text-decoration: none;
+  margin: auto 25px auto 0;
+  cursor: url(../../../../images/cursor_hand.cur), pointer;
+}
+
+@media screen and (max-width: 430px) {
+  .footer-social-links__icon {
+    margin: auto 0 auto 25px;
+  }
+}

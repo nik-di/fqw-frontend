@@ -1,0 +1,10 @@
+.news-card-list__heading_flex_dir-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 800px) {
+  .news-card-list__heading_flex_dir-row {
+    flex-direction: row;
+  }
+}

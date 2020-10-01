@@ -1,0 +1,20 @@
+@import url(./_active/header-top-panel__link_active.css);
+@import url(./_hidden/header-top-panel__link_hidden.css);
+
+.header-top-panel__link {
+  text-decoration: none;
+  color: inherit;
+  margin: auto 0;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: url(../../../../images/cursor_hand.cur), pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .header-top-panel__link {
+    margin: auto 0 auto 10px;
+    font-size: .9rem;
+    font-weight: 400;
+  }
+}

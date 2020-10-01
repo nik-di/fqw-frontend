@@ -1,0 +1,6 @@
+@import url(./_active/error_active.css);
+.error {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+}

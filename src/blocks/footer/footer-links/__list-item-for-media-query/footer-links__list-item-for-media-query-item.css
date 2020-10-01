@@ -1,0 +1,5 @@
+@media screen and (max-width: 600px) {
+  .footer-links__list-item-for-media-query {
+    margin-bottom: 20px;
+  }
+}

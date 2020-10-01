@@ -1,0 +1,8 @@
+.header-top-panel__links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+}

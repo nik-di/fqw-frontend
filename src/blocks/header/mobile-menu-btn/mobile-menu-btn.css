@@ -1,0 +1,20 @@
+@import url(./__line/mobile-menu-btn__line.css);
+@import url(./_color/mobile-menu-btn_color_white.css);
+@import url(./_color/mobile-menu-btn_color_black.css);
+
+.mobile-menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 25px;
+  cursor: url(../../../images/cursor_hand.cur), pointer;
+}
+
+@media screen and (min-width: 600px) {
+  .mobile-menu-btn {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+  }
+}

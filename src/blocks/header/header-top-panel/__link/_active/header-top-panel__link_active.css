@@ -1,0 +1,10 @@
+.header-top-panel__link_active {
+  padding-bottom: 30px;
+  border-bottom: 2px solid;
+}
+
+@media screen and (max-width: 300px) {
+  .header-top-panel__link_active {
+    padding-bottom: 0;
+  }
+}

@@ -1,0 +1,7 @@
+@import url(./_type_mobile-menu/popup__link_type_mobile-menu.css);
+
+.popup__link {
+  color: #2F71E5;
+  text-decoration: none;
+  cursor: url(../../../images/cursor_hand.cur), pointer;
+}

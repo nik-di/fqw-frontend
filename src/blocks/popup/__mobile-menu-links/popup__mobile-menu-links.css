@@ -1,0 +1,10 @@
+.popup__mobile-menu-links {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 360px;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  color: #ffffff;
+}

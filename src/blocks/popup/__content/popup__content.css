@@ -1,0 +1,16 @@
+@import url(./_type_mobile-menu/popup__content_type_mobile-menu.css);
+@import url(./_size/popup__content_size_s.css);
+
+.popup__content {
+  width: 90vw;
+  height: 90vh;
+  max-width: 430px;
+  max-height: 380px;
+  min-height: 375px;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}

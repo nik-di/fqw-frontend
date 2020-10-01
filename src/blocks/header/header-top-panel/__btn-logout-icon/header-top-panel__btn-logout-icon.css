@@ -1,0 +1,5 @@
+@import url(./_hidden/header-top-panel__btn-logout-icon_hidden.css);
+
+.header-top-panel__btn-logout-icon {
+  margin-left: 5px;
+}
