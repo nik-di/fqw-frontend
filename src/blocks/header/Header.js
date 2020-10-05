@@ -20,16 +20,14 @@ export default class Header {
   _renderBtnContent() {
     const initialBtnValue = 'Авторизоваться';
     if (this.isLogged) {
-      const logoutIconTemplate = document.querySelector('.logout-icon-tpl').content;
+      const logoutIconTemplate = document.querySelector('.logout-icon-tpl').cloneNode(true).content;
       const serviceDiv = document.createElement('div');
       serviceDiv.append(logoutIconTemplate);
       this.headerButton.textContent = this.userName;
       this.headerButton.insertAdjacentHTML('beforeend', serviceDiv.innerHTML);
-      return;
-    }
-    if (!this.isLogged) {
+    } else {
       this.headerButton.innerHTML = initialBtnValue;
-    }
+    };
   }
 
   _linksRender() {
