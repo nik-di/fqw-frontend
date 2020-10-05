@@ -104,7 +104,6 @@ const signinSubmit = (formInstance) => {
     })
     .then(() => {
       headerHandler();
-      document.location.reload(true);
     })
     .catch((err) => {
       formInstance.setServerError(err.message);
@@ -165,8 +164,7 @@ const signinPopupHandler = (ev) => {
         localStorage.setItem('isLoggedIn', false);
       })
       .then(() => {
-        headerHandler()
-        document.location.reload(true);
+        headerHandler();
       })
       .catch((err) => console.error('errr', err))
   }
