@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Nikishin D.I.">
   <meta name="description"
-        content="Страница с сохраненными статьями происходящих в мире событий найденных по ключевому слову">
+    content="Страница с сохраненными статьями происходящих в мире событий найденных по ключевому слову">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css%>">
   <link rel="shortcut icon" href="<%=require('../../images/favicon.png')%>" type="image/x-icon">
   <title>News Explorer: Saved articles</title>
@@ -15,15 +15,63 @@
 
 <body class="page">
 
+  <!-- Templates -->
+  <template class="mobile-menu-popup">
+    <div class="popup__wrapper popup__wrapper_type_mobile-menu">
+      <div class="popup__content popup__content_type_mobile-menu">
+        <div class="popup__mobile-menu-header">NewsExplorer</div>
+        <div class="popup__border-line"></div>
+        <nav class="popup__mobile-menu-nav header-top-panel__nav">
+          <ul class="list popup__mobile-menu-links header-top-panel__links">
+            <li class="list__item list__item_type_mobile-popup">
+              <a href="./main.html" class="links header-top-panel__link">Главная</a>
+            </li>
+            <li class="list__item list__item_type_mobile-popup">
+              <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
+              <a href="./articles.html"
+                class="links header-top-panel__link header-top-panel__link-to-saved-page">Сохраненные&nbsp;статьи</a>
+            </li>
+            <li class="list__item list__item_type_mobile-popup">
+              <button data-is-logged="unlogged"
+                class="popup__link popup__button popup__button_type_mobile-menu header-top-panel__button">Авторизоваться
+                <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
+              </button>
+              <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+              </svg>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <svg class="popup__close popup__close_type_mobile-menu" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+        fill="white" />
+      <path
+        d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+        fill="white" />
+    </svg>
+  </template>
+
+  <template class="logout-icon-tpl">
+    <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+    </svg>
+  </template>
+  <!-- Templates end -->
+
   <header class="header header_type_saved-articles">
     <section class="header-top-panel">
       <h3 class="header-top-panel__title" lang="en">NewsExplorer</h3>
       <div class="mobile-menu-btn mobile-menu-btn_color_black">
-        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2"
-             xmlns="http://www.w3.org/2000/svg">
+        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
           <rect width="16" height="2" /></svg>
-        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2"
-             xmlns="http://www.w3.org/2000/svg">
+        <svg class="mobile-menu-btn__line" width="16" height="2" viewBox="0 0 16 2" xmlns="http://www.w3.org/2000/svg">
           <rect width="16" height="2" /></svg>
       </div>
       <nav class="header-top-panel__nav">
@@ -35,18 +83,11 @@
           <li class="list__item">
             <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
             <a href="./articles.html"
-               class="links header-top-panel__link header-top-panel__link_active">Сохраненные&nbsp;статьи</a>
+              class="links header-top-panel__link header-top-panel__link_active">Сохраненные&nbsp;статьи</a>
           </li>
           <li class="list__item">
-            <button data-is-logged="unlogged" class="header-top-panel__button header-top-panel__button_type_saved-articles">
-              <template id="logout-icon-tpl">
-                <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
-                </svg>
-              </template>
-            </button>
+            <button data-is-logged="unlogged"
+              class="header-top-panel__button header-top-panel__button_type_saved-articles"></button>
           </li>
         </ul>
       </nav>
@@ -55,64 +96,19 @@
     <section class="header-content header-content_content-position_left saved-articles">
       <h4 class="header-content__subtitle">Сохраненные статьи</h4>
       <h2 class="header-content__title header-content__title_mrgn-top_0">
-        <span class="saved-articles__span-name">Грета</span>, у вас <span
-              class="saved-articles__span-articles-counter">5</span> сохраненных статей
+        <span class="saved-articles__span-name">Хм</span>, у вас <span
+          class="saved-articles__span-articles-counter">сколько-то</span> сохраненных статей
       </h2>
       <p class="header-content__subtitle">По ключевым словам: <span
-              class="saved-articles__span-keyword-articles">Природа, Тайга и 2 другим</span></p>
+          class="saved-articles__span-keyword-articles">Слова такие-то и такие-то, может и больше...</span></p>
     </section>
   </header>
 
   <main class="main">
     <!-- popup_visible - открывает попап -->
     <section class="popup"></section>
-
-    <template class="mobile-menu-popup">
-      <div class="popup__wrapper popup__wrapper_type_mobile-menu">
-        <div class="popup__content popup__content_type_mobile-menu">
-          <div class="popup__mobile-menu-header">NewsExplorer</div>
-          <div class="popup__border-line"></div>
-          <nav class="popup__mobile-menu-nav header-top-panel__nav">
-            <ul class="list popup__mobile-menu-links header-top-panel__links">
-              <li class="list__item list__item_type_mobile-popup">
-                <a href="./main.html" class="links header-top-panel__link">Главная</a>
-              </li>
-              <li class="list__item list__item_type_mobile-popup">
-                <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
-                <a href="./articles.html"
-                   class="links header-top-panel__link header-top-panel__link-to-saved-page">Сохраненные&nbsp;статьи</a>
-              </li>
-              <li class="list__item list__item_type_mobile-popup">
-                <button data-is-logged="unlogged"
-                        class="popup__link popup__button popup__button_type_mobile-menu header-top-panel__button">Авторизоваться
-                  <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
-                </button>
-                <svg class="header-top-panel__btn-logout-icon"
-                     width="24"
-                     height="24" viewBox="0 0 24 24" fill="white"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
-                </svg>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <svg class="popup__close popup__close_type_mobile-menu" fill="none"
-           xmlns="http://www.w3.org/2000/svg">
-        <path
-              d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-              fill="white" />
-        <path
-              d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-              fill="white" />
-      </svg>
-    </template>
-
     <!-- news-card-list_is-visible - показать блок с результатами поиска -->
-    <section id="search-result"
-             class="news-card-list news-card-list_type_saved-articles news-card-list_is-visible">
+    <section id="search-result" class="news-card-list news-card-list_type_saved-articles news-card-list_is-visible">
 
       <div class="news-card-list__card-container">
       </div>
@@ -129,16 +125,14 @@
           <a class="links footer-links__link" href="./index.html">Главная</a>
         </li>
         <li class="list__item footer-links__list-item-for-media-query">
-          <a class="links footer-links__link" href="https://praktikum.yandex.ru/"
-             target="_blank">Яндекс.Практикум</a>
+          <a class="links footer-links__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a>
         </li>
       </ul>
     </nav>
     <div class="footer-nav">
       <ul class="list footer-social-links">
         <li class="list__item">
-          <a class="links footer-social-links__icon" href="https://github.com/nik-di"
-             target="_blank">
+          <a class="links footer-social-links__icon" href="https://github.com/nik-di" target="_blank">
             <picture>
               <source srcset="<%=require('../../images/social-icon_gh.svg')%>">
               <img src="./images/social-icon_gh.png" alt="Logo Github">

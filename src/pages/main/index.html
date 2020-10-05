@@ -14,6 +14,163 @@
 
 <body class="page">
 
+  <!-- Templates -->
+  <template class="mobile-menu-popup">
+    <div class="popup__wrapper popup__wrapper_type_mobile-menu">
+      <div class="popup__content popup__content_type_mobile-menu">
+        <div class="popup__mobile-menu-header">NewsExplorer</div>
+        <div class="popup__border-line"></div>
+        <nav class="popup__mobile-menu-nav header-top-panel__nav">
+          <ul class="list popup__mobile-menu-links header-top-panel__links">
+            <li class="list__item list__item_type_mobile-popup">
+              <a href="./main.html" class="links header-top-panel__link">Главная</a>
+            </li>
+            <li class="list__item list__item_type_mobile-popup">
+              <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
+              <a href="./articles.html"
+                class="links header-top-panel__link header-top-panel__link-to-saved-page">Сохраненные&nbsp;статьи</a>
+            </li>
+            <li class="list__item list__item_type_mobile-popup">
+              <button data-is-logged="unlogged"
+                class="popup__link popup__button popup__button_type_mobile-menu header-top-panel__button">Авторизоваться
+                <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
+              </button>
+              <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+              </svg>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <svg class="popup__close popup__close_type_mobile-menu" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+        fill="white" />
+      <path
+        d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+        fill="white" />
+    </svg>
+  </template>
+
+  <template class="auth-popup">
+    <div class="popup__wrapper">
+      <div class="popup__content">
+        <h2 class="popup__title">Вход</h2>
+        <form novalidate class="form" name="signin-form">
+          <div class="form__field">
+            <label class="form__label" for="auth-email">Email</label>
+            <input required tabindex="1" autocomplete="off"
+              pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$" type="email" name="email"
+              class="form__input" id="auth-email" placeholder="Enter email">
+            <span class="form__error">e-mail в формате: sega@yandex.ru</span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="auth-pass">Password</label>
+            <input required tabindex="2" autocomplete="off" minlength="6" type="password" name="password"
+              class="form__input" id="auth-pass" placeholder="Enter password">
+            <span class="form__error">пароль должен быть больше 6 символов</span>
+          </div>
+          <div class="form__field">
+            <button disabled tabindex="3" class="form__button">Войти</button>
+            <!-- form__server-error_visible - видимая ошибка -->
+            <span
+              class="form__error error form__server-error form__server-error_order_1 form__server-error_position_center form__server-error_margin">ошибка
+              сервера</span>
+          </div>
+          <div class="popup__pretext">или&nbsp;
+            <span class="popup__link">Зарегистрироваться</span>
+          </div>
+        </form>
+      </div>
+      <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+          fill="white" />
+        <path
+          d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+          fill="white" />
+      </svg>
+    </div>
+  </template>
+
+  <template class="registration-popup">
+    <div class="popup__wrapper">
+      <div class="popup__content">
+        <h2 class="popup__title">Регистрация</h2>
+        <form class="form" name="signup-form">
+          <div class="form__field">
+            <label class="form__label" for="reg-email">Email</label>
+            <input required tabindex="1" autocomplete="off"
+              pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$" type="email" name="email"
+              class="form__input" id="reg-email" placeholder="Enter email">
+            <span class="form__error">e-mail в формате: sega@yandex.ru</span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="reg-pass">Password</label>
+            <input required tabindex="2" autocomplete="off" minlength="6" type="password" name="password"
+              class="form__input" id="reg-pass" placeholder="Enter password">
+            <span class="form__error">пароль должен быть больше 6 символов</span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="reg-name">Name</label>
+            <input required tabindex="3" autocomplete="off" minlength="2" type="text" name="name" class="form__input"
+              id="reg-name" placeholder="Enter name">
+            <span class="form__error">имя должно быть больше 2 символов</span>
+          </div>
+          <div class="form__field">
+            <!--  popup__button_disabled - деактивация кнопки попапа -->
+            <button disabled tabindex="4" class="form__button">Зарегистрироваться</button>
+            <span
+              class="form__error error form__server-error form__server-error form__server-error_order_1 form__server-error_position_center form__server-error_margin">ошибка
+              сервера</span>
+          </div>
+          <div class="popup__pretext">или&nbsp;
+            <span class="popup__link">Войти</span>
+          </div>
+        </form>
+      </div>
+      <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+          fill="white" />
+        <path
+          d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+          fill="white" />
+      </svg>
+    </div>
+  </template>
+
+  <template class="reg-success-popup">
+    <div class="popup__wrapper">
+      <div class="popup__content popup__content_size_s">
+        <h2 class="popup__title">Пользователь успешно зарегистрирован!</h2>
+        <div class="popup__pretext">
+          <span class="popup__link">Выполнить вход</span>
+        </div>
+      </div>
+      <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
+          fill="white" />
+        <path
+          d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
+          fill="white" />
+      </svg>
+    </div>
+  </template>
+
+  <template class="logout-icon-tpl">
+    <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
+    </svg>
+  </template>
+  <!-- Templates end -->
+
   <header class="header header_type_search">
     <section class="header-top-panel">
       <h3 class="header-top-panel__title" lang="en">NewsExplorer</h3>
@@ -35,15 +192,7 @@
               class="links header-top-panel__link header-top-panel__link-to-saved-page">Сохраненные&nbsp;статьи</a>
           </li>
           <li class="list__item">
-            <button data-is-logged="unlogged" class="header-top-panel__button">
-              <template id="logout-icon-tpl">
-                <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
-                </svg>
-              </template>
-            </button>
+            <button data-is-logged="unlogged" class="header-top-panel__button"></button>
           </li>
         </ul>
       </nav>
@@ -68,153 +217,6 @@
   <main class="main">
     <!-- popup_visible - открывает попап -->
     <section class="popup"></section>
-
-    <template class="mobile-menu-popup">
-      <div class="popup__wrapper popup__wrapper_type_mobile-menu">
-        <div class="popup__content popup__content_type_mobile-menu">
-          <div class="popup__mobile-menu-header">NewsExplorer</div>
-          <div class="popup__border-line"></div>
-          <nav class="popup__mobile-menu-nav header-top-panel__nav">
-            <ul class="list popup__mobile-menu-links header-top-panel__links">
-              <li class="list__item list__item_type_mobile-popup">
-                <a href="./main.html" class="links header-top-panel__link">Главная</a>
-              </li>
-              <li class="list__item list__item_type_mobile-popup">
-                <!-- header-top-panel__link_hidden - скрывает ссылку на страницу со статьями для неавторизованных пользователей -->
-                <a href="./articles.html"
-                  class="links header-top-panel__link header-top-panel__link-to-saved-page">Сохраненные&nbsp;статьи</a>
-              </li>
-              <li class="list__item list__item_type_mobile-popup">
-                <button data-is-logged="unlogged"
-                  class="popup__link popup__button popup__button_type_mobile-menu header-top-panel__button">Авторизоваться
-                  <!--  header-top-panel__btn-logout-icon_hidden - скрывает значек logout -->
-                </button>
-                <svg class="header-top-panel__btn-logout-icon" width="24" height="24" viewBox="0 0 24 24" fill="white"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z" />
-                </svg>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-      <svg class="popup__close popup__close_type_mobile-menu" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-          fill="white" />
-        <path
-          d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-          fill="white" />
-      </svg>
-    </template>
-
-    <template class="auth-popup">
-      <div class="popup__wrapper">
-        <div class="popup__content">
-          <h2 class="popup__title">Вход</h2>
-          <form novalidate class="form" name="signin-form">
-            <div class="form__field">
-              <label class="form__label" for="auth-email">Email</label>
-              <input required tabindex="1" autocomplete="off"
-                pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$" type="email" name="email"
-                class="form__input" id="auth-email" placeholder="Enter email">
-              <span class="form__error">e-mail в формате: sega@yandex.ru</span>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="auth-pass">Password</label>
-              <input required tabindex="2" autocomplete="off" minlength="6" type="password" name="password"
-                class="form__input" id="auth-pass" placeholder="Enter password">
-              <span class="form__error">пароль должен быть больше 6 символов</span>
-            </div>
-            <div class="form__field">
-              <button disabled tabindex="3" class="form__button">Войти</button>
-              <!-- form__server-error_visible - видимая ошибка -->
-              <span
-                class="form__error error form__server-error form__server-error_order_1 form__server-error_position_center form__server-error_margin">ошибка
-                сервера</span>
-            </div>
-            <div class="popup__pretext">или&nbsp;
-              <span class="popup__link">Зарегистрироваться</span>
-            </div>
-          </form>
-        </div>
-        <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-            fill="white" />
-          <path
-            d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-            fill="white" />
-        </svg>
-      </div>
-    </template>
-
-    <template class="registration-popup">
-      <div class="popup__wrapper">
-        <div class="popup__content">
-          <h2 class="popup__title">Регистрация</h2>
-          <form class="form" name="signup-form">
-            <div class="form__field">
-              <label class="form__label" for="reg-email">Email</label>
-              <input required tabindex="1" autocomplete="off"
-                pattern="^([\w-]{2,}(\.{1,}\w+)*)@([\w-]{2,})\.[a-z]{2,}(\.[a-z]{2,})*$" type="email" name="email"
-                class="form__input" id="reg-email" placeholder="Enter email">
-              <span class="form__error">e-mail в формате: sega@yandex.ru</span>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="reg-pass">Password</label>
-              <input required tabindex="2" autocomplete="off" minlength="6" type="password" name="password"
-                class="form__input" id="reg-pass" placeholder="Enter password">
-              <span class="form__error">пароль должен быть больше 6 символов</span>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="reg-name">Name</label>
-              <input required tabindex="3" autocomplete="off" minlength="2" type="text" name="name" class="form__input"
-                id="reg-name" placeholder="Enter name">
-              <span class="form__error">имя должно быть больше 2 символов</span>
-            </div>
-            <div class="form__field">
-              <!--  popup__button_disabled - деактивация кнопки попапа -->
-              <button disabled tabindex="4" class="form__button">Зарегистрироваться</button>
-              <span
-                class="form__error error form__server-error form__server-error form__server-error_order_1 form__server-error_position_center form__server-error_margin">ошибка
-                сервера</span>
-            </div>
-            <div class="popup__pretext">или&nbsp;
-              <span class="popup__link">Войти</span>
-            </div>
-          </form>
-        </div>
-        <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-            fill="white" />
-          <path
-            d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-            fill="white" />
-        </svg>
-      </div>
-    </template>
-
-    <template class="reg-success-popup">
-      <div class="popup__wrapper">
-        <div class="popup__content popup__content_size_s">
-          <h2 class="popup__title">Пользователь успешно зарегистрирован!</h2>
-          <div class="popup__pretext">
-            <span class="popup__link">Выполнить вход</span>
-          </div>
-        </div>
-        <svg class="popup__close" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M22.3566 20L31.1781 28.8215L28.8211 31.1786L18.3497 20.7072C17.9592 20.3166 17.9592 19.6835 18.3497 19.2929L28.8211 8.82153L31.1781 11.1786L22.3566 20Z"
-            fill="white" />
-          <path
-            d="M18.1307 20L9.30919 28.8215L11.6662 31.1786L22.1376 20.7072C22.5281 20.3166 22.5281 19.6835 22.1376 19.2929L11.6662 8.82153L9.30919 11.1786L18.1307 20Z"
-            fill="white" />
-        </svg>
-      </div>
-    </template>
 
     <section class="preloader"></section>
 

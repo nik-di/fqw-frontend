@@ -20,29 +20,23 @@ export default class Header {
   _renderBtnContent() {
     const initialBtnValue = 'Авторизоваться';
     if (this.isLogged) {
-      const logoutIconTemplate = this.headerNav.querySelector('#logout-icon-tpl').content;
+      const logoutIconTemplate = document.querySelector('.logout-icon-tpl').cloneNode(true).content;
       const serviceDiv = document.createElement('div');
       serviceDiv.append(logoutIconTemplate);
       this.headerButton.textContent = this.userName;
       this.headerButton.insertAdjacentHTML('beforeend', serviceDiv.innerHTML);
-      return;
-    }
-    if (!this.isLogged) {
+    } else {
       this.headerButton.innerHTML = initialBtnValue;
-    }
-  }
-
-  _linkHidden() {
-    if (!this.isLogged) {
-      const link = this.linkForHidden;
-      link.classList.add('header-top-panel__link_hidden');
     };
   }
 
-  _linkShow() {
+  _linksRender() {
+    const link = this.linkForHidden;
+
     if (this.isLogged) {
-      const link = this.linkForHidden;
       link.classList.remove('header-top-panel__link_hidden');
+    } else {
+      link.classList.add('header-top-panel__link_hidden');
     };
   }
 
@@ -55,8 +49,7 @@ export default class Header {
   render() {
     this._renderBtnContent();
     if (this.isMainPage) {
-      this._linkHidden();
-      this._linkShow();
+      this._linksRender();
     }
     this._changeRoleHeaderButton();
   }
