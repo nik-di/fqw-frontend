@@ -1,4 +1,4 @@
-# Final work on html and css at the web development course
+# Graduate work in web development
 
 <img src="https://img.shields.io/static/v1?label=ver&message=0.2.2&color=brightgreen">
 <img src="https://img.shields.io/static/v1?label=webpack&message=4.43.0&color=blue">
