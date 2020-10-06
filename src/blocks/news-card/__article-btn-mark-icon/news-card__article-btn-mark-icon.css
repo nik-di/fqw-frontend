@@ -15,6 +15,12 @@ input:checked + .news-card__article-btn-mark-icon {
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='8' fill='white'/%3E%3Cpath d='M13 12C13 11.4477 13.4477 11 14 11H26C26.5523 11 27 11.4477 27 12V30L20 24.5L13 30V12Z' fill='%232F71E5'/%3E%3C/svg%3E");
 }
 
-.news-card__article-btn-mark-icon:hover {
+input:not(:disabled) + .news-card__article-btn-mark-icon:hover {
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='8' fill='white'/%3E%3Cpath d='M19.3822 23.7137L14 27.9425V12L26 12V27.9425L20.6178 23.7137L20 23.2283L19.3822 23.7137Z' stroke='%231A1B22' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+input:disabled:not(:checked) + .news-card__article-btn-mark-icon,
+input:disabled:not(:checked) + .news-card__article-btn-mark-icon:hover {
+  cursor: not-allowed;
+  opacity: .3;
 }

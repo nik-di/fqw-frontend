@@ -1,6 +1,6 @@
 # Graduate work in web development
 
-<img src="https://img.shields.io/static/v1?label=ver&message=0.2.2&color=brightgreen">
+<img src="https://img.shields.io/static/v1?label=ver&message=0.2.3&color=brightgreen">
 <img src="https://img.shields.io/static/v1?label=webpack&message=4.43.0&color=blue">
 <img src="https://img.shields.io/static/v1?label=build&message=passing&color=green">
 <img src="https://img.shields.io/static/v1?label=build-size&message=1.65MB&color=informational">
@@ -44,9 +44,10 @@ __*Это сервис, в котором пользователь вводит 
 5. *Заполнить блок "О себе";*
 6. *Попапы не закрываются при нажатии на "ESC";* `Update: ✔`
 7. *Блокировать поля ввода и кнопку отправки формы во время запроса;*
-8. *При удалении новости на странице сохраненных перезагружается вся страница. Изменить логику удаления без перезагрузки;*
+8. *При удалении новости на странице сохраненных перезагружается вся страница. Изменить логику удаления без перезагрузки;* `Update: ✔`
 9. *Защитить от XSS поля ввода форм. Как вариант SanitizeHtml;* `Update: ✔`
-10. *При добавлении новости в сохраненные, маркер на кнопке устанавливается даже если запрос завершился с ошибкой. Добавить проверку на успешный результат.*
+10. *При добавлении новости в сохраненные, маркер на кнопке устанавливается даже если запрос завершился с ошибкой. Добавить проверку на успешный результат;* `Update: ✔`
+11. *Защитить от XSS данные приходящие с сервера.* `Update: ✔`
 
 #### Благодарности:
 * Денис [@zlocate](https://github.com/zlocate)

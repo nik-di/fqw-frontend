@@ -9,6 +9,12 @@ export default class NewsCard extends BaseComponent {
     this.card = document.createElement('a');
   }
 
+  _xssSanitizeData(elem) {
+    const plug = document.createElement('div');
+    plug.innerText = elem;
+    return plug.innerHTML;
+  }
+
   getCard() {
     const { isLogged, cardType } = this.cardOptions;
     this.card.classList.add('news-card');
@@ -64,13 +70,13 @@ export default class NewsCard extends BaseComponent {
     } = articleContent;
     return (
       `<picture>
-      <img src="${urlToImage ? urlToImage : defaultImage}" alt="Новостная картинка"
+      <img src="${this._xssSanitizeData(urlToImage ? urlToImage : defaultImage)}" alt="Новостная картинка"
            class="news-card__img">
     </picture>
-    <p class="news-card__date">${this._correctDateForCardFormat(publishedAt)}</p>
-    <h3 class="news-card__title">${title}</h3>
-    <p class="news-card__text">${description}</p>
-    <p class="news-card__source-link">${source.name}</p>
+    <p class="news-card__date">${this._xssSanitizeData(this._correctDateForCardFormat(publishedAt))}</p>
+    <h3 class="news-card__title">${this._xssSanitizeData(title)}</h3>
+    <p class="news-card__text">${this._xssSanitizeData(description)}</p>
+    <p class="news-card__source-link">${this._xssSanitizeData(source.name)}</p>
     <label class="news-card__article-btn">
     <input type="checkbox">
     <span class="news-card__article-btn-mark-icon"></span>
@@ -82,17 +88,17 @@ export default class NewsCard extends BaseComponent {
       keyword, title, text, date, source, image,
     } = articleContent;
     return (
-      `<picture><img src="${image}" alt="Новостная картинка" class="news-card__img"></picture>
-    <p class="news-card__date">${date}</p>
-    <h3 class="news-card__title">${title}</h3>
-    <p class="news-card__text">${text}</p>
-    <p class="news-card__source-link">${source}</p>
+      `<picture><img src="${this._xssSanitizeData(image)}" alt="Новостная картинка" class="news-card__img"></picture>
+    <p class="news-card__date">${this._xssSanitizeData(date)}</p>
+    <h3 class="news-card__title">${this._xssSanitizeData(title)}</h3>
+    <p class="news-card__text">${this._xssSanitizeData(text)}</p>
+    <p class="news-card__source-link">${this._xssSanitizeData(source)}</p>
     <label class="news-card__article-btn">
       <input type="checkbox">
       <span class="news-card__article-btn-del"></span>
     </label>
   </div>
-  <div class="news-card__article-keyword">${keyword}</div>`);
+  <div class="news-card__article-keyword">${this._xssSanitizeData(keyword)}</div>`);
   }
 
   _showHint() {
@@ -120,13 +126,18 @@ export default class NewsCard extends BaseComponent {
     const title = card.querySelector('.news-card__title').textContent;
     const text = card.querySelector('.news-card__text').textContent;
     const source = card.querySelector('.news-card__source-link').textContent;
-    if (!checkbox.checked) return;
     api
       .createArticle({ date, link, image, title, text, source, keyword })
       .then((res) => {
-        checkbox.setAttribute('disabled', '');
+        checkbox.checked = true;
       })
-      .catch((err) => console.error('card-err', err));
+      .catch((err) => {
+        checkbox.checked = false;
+        console.error('card-err', err)
+      })
+      .finally(() => {
+        checkbox.setAttribute('disabled', '')
+      });
   }
 
   _deleteCard() {
@@ -135,10 +146,9 @@ export default class NewsCard extends BaseComponent {
     api
       .removeArticle(cardId)
       .then(() => {
-        const [showHint, hideHint, saveCard, delCard] = this._handlers();
+        const [showHint, hideHint, delCard] = this._handlers();
         this._removeEventListeners([showHint, hideHint, delCard]);
         this.card.remove();
-        document.location.reload(true);
       })
       .catch((err) => {
         alert('По каким-то причинам сюда попала не Ваша карточка и Вы не можете её удалить...')
