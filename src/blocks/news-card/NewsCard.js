@@ -120,13 +120,18 @@ export default class NewsCard extends BaseComponent {
     const title = card.querySelector('.news-card__title').textContent;
     const text = card.querySelector('.news-card__text').textContent;
     const source = card.querySelector('.news-card__source-link').textContent;
-    if (!checkbox.checked) return;
     api
       .createArticle({ date, link, image, title, text, source, keyword })
       .then((res) => {
-        checkbox.setAttribute('disabled', '');
+        checkbox.checked = true;
       })
-      .catch((err) => console.error('card-err', err));
+      .catch((err) => {
+        checkbox.checked = false;
+        console.error('card-err', err)
+      })
+      .finally(() => {
+        checkbox.setAttribute('disabled', '')
+      });
   }
 
   _deleteCard() {
@@ -135,10 +140,9 @@ export default class NewsCard extends BaseComponent {
     api
       .removeArticle(cardId)
       .then(() => {
-        const [showHint, hideHint, saveCard, delCard] = this._handlers();
+        const [showHint, hideHint, delCard] = this._handlers();
         this._removeEventListeners([showHint, hideHint, delCard]);
         this.card.remove();
-        document.location.reload(true);
       })
       .catch((err) => {
         alert('По каким-то причинам сюда попала не Ваша карточка и Вы не можете её удалить...')
