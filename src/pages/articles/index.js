@@ -41,12 +41,15 @@ const headerContent = new HeaderContent(document.querySelector('.header-content'
  * NewsCardList logic ↓
  */
 const callbackCardConstructor = (article) => {
-  return new NewsCard(article, {
+  const cardOptions = {
     cardType: 'saved',
     isLogged: JSON.parse(localStorage.getItem('isLoggedIn')),
     keyword: localStorage.getItem('NewsResult') && JSON.parse(localStorage.getItem('NewsResult')).keyword,
-    api: newsExplorerApi
-  });
+    api: newsExplorerApi,
+    removeArticleFromHeader: headerContent.removeArticleMention
+  };
+
+  return new NewsCard(article, cardOptions);
 };
 const newsCardList = new NewsCardList(CARD_LIST, CARD_LIST_CONTAINER, callbackCardConstructor);
 newsExplorerApi
@@ -56,7 +59,7 @@ newsExplorerApi
     newsCardList.showCardListBlock();
     newsCardList.renderAllCards(articles);
     const keywordsArr = [...document.querySelectorAll('.news-card__article-keyword')].map(keywordElem => keywordElem.textContent);
-    headerContent.renderArticlesHeader(articles.length, keywordsArr);
+    headerContent.updateHeaderInfo(articles.length, keywordsArr);
   })
   .catch()
 // NewsCardList logic end

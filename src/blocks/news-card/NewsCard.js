@@ -19,8 +19,10 @@ export default class NewsCard extends BaseComponent {
     const { isLogged, cardType } = this.cardOptions;
     this.card.classList.add('news-card');
     if (cardType === 'saved') {
-      this.card.href = this.article.link;
-      this.card.setAttribute('data-card-id', this.article._id);
+      const { link, _id, keyword } = this.article;
+      this.card.href = link;
+      this.card.dataset.cardId = _id;
+      this.card.dataset.cardKeyword = keyword;
       this.card.insertAdjacentHTML('beforeend', this._getSavedCardTemplate(this.article));
       this._setEventListeners([this._handlers()[3]]);
     } else {
@@ -141,14 +143,15 @@ export default class NewsCard extends BaseComponent {
   }
 
   _deleteCard() {
-    const cardId = this.card.attributes['data-card-id'].value;
-    const { api } = this.cardOptions;
+    const { cardId, cardKeyword } = this.card.dataset;
+    const { api, removeArticleFromHeader } = this.cardOptions;
     api
       .removeArticle(cardId)
       .then(() => {
         const [showHint, hideHint, delCard] = this._handlers();
         this._removeEventListeners([showHint, hideHint, delCard]);
         this.card.remove();
+        removeArticleFromHeader(cardKeyword);
       })
       .catch((err) => {
         alert('По каким-то причинам сюда попала не Ваша карточка и Вы не можете её удалить...')
